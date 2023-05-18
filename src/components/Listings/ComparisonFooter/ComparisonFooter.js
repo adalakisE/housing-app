@@ -4,20 +4,20 @@ import { removeFromComparison } from "../../../redux/actions/toDoActions";
 import "./ComparisonFooterStyles.scss";
 
 function ComparisonFooter() {
-  const items = useSelector((state) => state.itemsInComparison);
+  const stateItems = useSelector((state) => state.itemsInComparison);
   const dispatch = useDispatch();
 
-  const handleDelete = (id) => {
-    dispatch(removeFromComparison(id));
+  const handleDelete = (item) => {
+    dispatch(removeFromComparison(item));
   };
 
-  const itemsList = items.map((item) => (
+  const itemsList = stateItems.map((item) => (
     <li
-      key={item}
+      key={item.id}
       className="comparison-footer__list-item"
       onClick={() => handleDelete(item)}
     >
-      {item}
+      {item.id}
     </li>
   ));
 

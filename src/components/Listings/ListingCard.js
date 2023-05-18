@@ -1,7 +1,13 @@
 import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  addToComparison,
+  removeFromComparison,
+} from "../../redux/actions/toDoActions";
 import "./ListingsStyles.scss";
 
 function ListingCard({
+  item,
   imgSrc,
   title,
   description,
@@ -11,6 +17,18 @@ function ListingCard({
   area,
 }) {
   const path = "http://127.0.0.1:8887/Icons/";
+
+  //dispatch actions to redux
+  const stateItems = useSelector((state) => state.itemsInComparison);
+  const dispatch = useDispatch();
+
+  const handleClick = (clickedItem) => {
+    if (stateItems.some((item) => item === clickedItem)) {
+      dispatch(removeFromComparison(clickedItem));
+    } else {
+      dispatch(addToComparison(item));
+    }
+  };
 
   return (
     <div className="listing-card__container">
@@ -54,7 +72,10 @@ function ListingCard({
             </ul>
           </span>
         </div>
-        <div className="listing-card__comparison">
+        <div
+          className="listing-card__comparison"
+          onClick={() => handleClick(item)}
+        >
           <div className="listing-card__comparison-container">
             <p className="listing-card__comparison-container-text">
               Include in comparison

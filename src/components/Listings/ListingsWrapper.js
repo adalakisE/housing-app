@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from "react";
 import ListingCard from "./ListingCard";
-import { useDispatch } from "react-redux";
-import { addToComparison } from "../../redux/actions/toDoActions";
 
 function ListingsWrapper() {
   const [list, setList] = useState([]);
   const path = "http://127.0.0.1:8887";
 
   const getListings = async () => {
-    const response = await fetch("http://127.0.0.1:8887/listings.json").then(
-      (response) => response.json()
+    const response = await fetch(`${path}/listings.json`).then((response) =>
+      response.json()
     );
     setList(response);
   };
@@ -19,22 +17,10 @@ function ListingsWrapper() {
     getListings();
   }, []);
 
-  //dispatch actions to redux
-  const dispatch = useDispatch();
-  //   const inputRef = useRef(null);
-  //   const item = useSelector((state) => state.items);
-
-  const handleAddition = (id) => {
-    dispatch(addToComparison(id));
-  };
-
   const items = list.map((item) => (
-    <li
-      key={item.id}
-      className="listings__list"
-      onClick={() => handleAddition(item.id)}
-    >
+    <li key={item.id} className="listings__list">
       <ListingCard
+        item={item}
         imgSrc={`${path}/ListingImages/item${item.id}.webp`}
         title={item.title}
         description={item.description}
