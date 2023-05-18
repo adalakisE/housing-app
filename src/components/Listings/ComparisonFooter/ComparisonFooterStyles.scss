@@ -1,0 +1,17 @@
+.comparison-footer {
+  border: 1px solid grey;
+  position: sticky;
+  bottom: 0;
+  background-color: white;
+  height: 80px;
+
+  &__list-container {
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+  }
+
+  &__list-item {
+    margin-right: 10px;
+  }
+}

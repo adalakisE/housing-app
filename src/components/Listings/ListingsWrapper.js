@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ListingCard from "./ListingCard";
+import { useDispatch } from "react-redux";
+import { addToComparison } from "../../redux/actions/toDoActions";
 
 function ListingsWrapper() {
   const [list, setList] = useState([]);
-  const [compare, setCompare] = useState(0);
   const path = "http://127.0.0.1:8887";
 
   const getListings = async () => {
@@ -14,17 +14,26 @@ function ListingsWrapper() {
     setList(response);
   };
 
-  const clickedCompare = () => {
-    setCompare(1);
-  };
-
   //run getListings() when the component loads
   useEffect(() => {
     getListings();
   }, []);
 
+  //dispatch actions to redux
+  const dispatch = useDispatch();
+  //   const inputRef = useRef(null);
+  //   const item = useSelector((state) => state.items);
+
+  const handleAddition = (id) => {
+    dispatch(addToComparison(id));
+  };
+
   const items = list.map((item) => (
-    <li key={item.id} className="listings__list">
+    <li
+      key={item.id}
+      className="listings__list"
+      onClick={() => handleAddition(item.id)}
+    >
       <ListingCard
         imgSrc={`${path}/ListingImages/item${item.id}.webp`}
         title={item.title}
@@ -33,7 +42,6 @@ function ListingsWrapper() {
         bedroom={item.bedrooms}
         price={item.price}
         area={item.area}
-        clickedCompare={clickedCompare}
       />
     </li>
   ));
@@ -41,7 +49,6 @@ function ListingsWrapper() {
   return (
     <div className="listings__container">
       <ul className="listings__ul">{items}</ul>
-      compare is: {compare}
     </div>
   );
 }
