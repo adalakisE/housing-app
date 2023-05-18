@@ -68,7 +68,7 @@ function ListingCard({
                 />
                 {bedroom} apartment
               </li>
-              <li style={{ fontSize: "20px", fontWeight: "bold" }}>{price}</li>
+              <li style={{ fontSize: "20px", fontWeight: "bold" }}>${price}</li>
             </ul>
           </span>
         </div>

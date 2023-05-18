@@ -3,15 +3,67 @@
   position: sticky;
   bottom: 0;
   background-color: white;
+  box-shadow: 0px -1px 9px rgba(128, 128, 128, 0.384);
+  border: none;
   height: 80px;
+  padding: 15px;
+  transition: all 0.2s ease-in-out;
 
   &__list-container {
     display: flex;
     flex-direction: row;
     list-style-type: none;
+    padding: 0;
+  }
+
+  &__left-container {
+    display: flex;
+    flex-direction: row;
   }
 
   &__list-item {
+    display: flex;
+    flex-direction: row;
+    flex: 1 1 200px;
+    justify-content: space-between;
+    background-color: rgba(128, 128, 128, 0.132);
+    max-height: 55px;
+    max-width: 400px;
     margin-right: 10px;
+    transition: all 0.2s ease-in-out;
+
+    p {
+      margin: 0;
+    }
+  }
+
+  &__list-photo {
+    width: 45px;
+    object-fit: cover;
+    margin-right: 10px;
+  }
+
+  &__list-body {
+    display: flex;
+    flex-direction: column;
+    font-size: 10px;
+    padding: 5px 0;
+  }
+
+  &__list-remove-btn {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    padding-right: 10px;
+  }
+}
+
+.icon-area {
+  width: 15px;
+  height: 15px;
+  margin-right: 10px;
+
+  &:hover {
+    cursor: pointer;
   }
 }
