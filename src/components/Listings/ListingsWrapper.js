@@ -15,13 +15,14 @@ function ListingsWrapper() {
       response.json()
     );
     setList(response);
-    dispatch(storeItems(response));
+    dispatch(storeItems(list));
     dispatch(filteredItems(response));
   };
 
   //run getListings() when the component loads
   useEffect(() => {
     getListings();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const stateItems = useSelector((state) => state.filteredItems);

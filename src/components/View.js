@@ -1,7 +1,7 @@
 import React from "react";
 import TopBar from "./TopBar/TopBarWrapper";
 import Listings from "./Listings/ListingsWrapper";
-import Features from "./Features/FeaturesWrapper";
+import MapWrapper from "./Features/MapWrapper";
 import ComparisonFooter from "./Listings/ComparisonFooter/ComparisonFooter";
 import "./ViewStyles.scss";
 
@@ -11,7 +11,7 @@ function View() {
       <TopBar />
       <div className="middle-page-wrapper">
         <Listings />
-        <Features />
+        <MapWrapper />
       </div>
       <ComparisonFooter />
     </div>

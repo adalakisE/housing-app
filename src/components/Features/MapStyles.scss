@@ -1,0 +1,15 @@
+.map-wrapper {
+  //   border: 1px solid grey;
+  position: sticky;
+  height: calc(100vh - 160px);
+  flex: 1 1 65%;
+  top: 156px;
+}
+
+.map {
+  &__container {
+    width: 100%;
+    position: absolute;
+    right: 0;
+  }
+}
