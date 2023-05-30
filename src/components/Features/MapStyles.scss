@@ -1,9 +1,12 @@
 .map-wrapper {
-  //   border: 1px solid grey;
   position: sticky;
   height: calc(100vh - 160px);
-  flex: 1 1 65%;
+  flex: 1 1 85%;
   top: 156px;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 }
 
 .map {
@@ -11,5 +14,11 @@
     width: 100%;
     position: absolute;
     right: 0;
+  }
+  &__marker-container {
+  }
+  &__marker-photo {
+    width: 100px;
+    height: 80px;
   }
 }

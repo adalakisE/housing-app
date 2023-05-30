@@ -7,7 +7,6 @@ function ListingsWrapper() {
   const [list, setList] = useState([]);
   const path = "http://127.0.0.1:8887";
 
-  // const storedItems = useSelector((state) => state.storedItems)
   const dispatch = useDispatch();
 
   const getListings = async () => {
@@ -15,11 +14,12 @@ function ListingsWrapper() {
       response.json()
     );
     setList(response);
-    dispatch(storeItems(list));
+    console.log(list); //why is list not updated directly with setlist?
+    dispatch(storeItems(response));
     dispatch(filteredItems(response));
   };
 
-  //run getListings() when the component loads
+  //runs getListings() when the component loads
   useEffect(() => {
     getListings();
     // eslint-disable-next-line react-hooks/exhaustive-deps
