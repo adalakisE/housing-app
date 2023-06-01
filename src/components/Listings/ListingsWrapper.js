@@ -5,14 +5,18 @@ import { filteredItems, storeItems } from "../../redux/actions/toDoActions";
 
 function ListingsWrapper() {
   const [list, setList] = useState([]);
-  const path = "http://127.0.0.1:8887";
+
+  //use the local URL if you don't want to run the server
+  // const URL = "http://127.0.0.1:8887"; //local URL, you need Web Server for chrome running
+  const URL = "http://127.0.0.1:3001"; //nodejs server URL
 
   const dispatch = useDispatch();
 
   const getListings = async () => {
-    const response = await fetch(`${path}/listings.json`).then((response) =>
-      response.json()
-    );
+    const response = await fetch(`${URL}/listings.json`)
+      .then((response) => response.json())
+      .catch((err) => console.log(err));
+
     setList(response);
     console.log(list); //why is list not updated directly with setlist?
     dispatch(storeItems(response));
@@ -31,7 +35,7 @@ function ListingsWrapper() {
     <li key={item.id} className="listings__list">
       <ListingCard
         item={item}
-        imgSrc={`${path}/ListingImages/item${item.id}.webp`}
+        imgSrc={item.photoLink}
         title={item.title}
         description={item.description}
         size={item.sqFt}

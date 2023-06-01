@@ -2,10 +2,9 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { removeFromComparison } from "../../../redux/actions/toDoActions";
 import "./ComparisonFooterStyles.scss";
+import Close from "../../../api/Icons/close.png";
 
 function ComparisonFooter() {
-  const path = "http://127.0.0.1:8887";
-
   const stateItems = useSelector((state) => state.itemsInComparison);
   const dispatch = useDispatch();
 
@@ -21,7 +20,7 @@ function ComparisonFooter() {
         <div className="comparison-footer__left-container">
           <img
             className="comparison-footer__list-photo"
-            src={`${path}/ListingImages/item${item.id}.webp`}
+            src={item.photoLink}
             alt="house"
           />
           <div className="comparison-footer__list-body">
@@ -35,7 +34,7 @@ function ComparisonFooter() {
         <div className="comparison-footer__list-remove-container">
           <img
             className="icon-area"
-            src={`${path}/Icons/close.png`}
+            src={Close}
             alt="close"
             onClick={() => handleDelete(item)}
           />

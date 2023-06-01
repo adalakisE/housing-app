@@ -5,6 +5,10 @@ import {
   removeFromComparison,
 } from "../../redux/actions/toDoActions";
 import "./ListingsStyles.scss";
+import Bed from "../../api/Icons/bed.png";
+import Placeholder from "../../api/Icons/placeholder.png";
+import Area from "../../api/Icons/area.png";
+import Compare from "../../api/Icons/compare.png";
 
 function ListingCard({
   item,
@@ -16,8 +20,6 @@ function ListingCard({
   price,
   area,
 }) {
-  const path = "http://127.0.0.1:8887/Icons/";
-
   //dispatch actions to redux
   const stateItems = useSelector((state) => state.itemsInComparison);
   const dispatch = useDispatch();
@@ -48,28 +50,20 @@ function ListingCard({
             <li className="listing-card__body-list-item">
               <img
                 className="icon-area"
-                src={`${path}placeholder.png`}
+                src={Placeholder}
                 alt="placeholder-icon"
               />
               {area}
             </li>
             <li className="listing-card__body-list-item">
-              <img
-                className="icon-area"
-                src={`${path}area.png`}
-                alt="area-icon"
-              />
+              <img className="icon-area" src={Area} alt="area-icon" />
               {size / 10}m<sup>2</sup>
             </li>
             <li
               className="listing-card__body-list-item"
               style={{ paddingBottom: "10px" }}
             >
-              <img
-                className="icon-area"
-                src={`${path}bed.png`}
-                alt="bed-icon"
-              />
+              <img className="icon-area" src={Bed} alt="bed-icon" />
               {bedroom} apartment
             </li>
             <div className="listing-card__footer">
@@ -84,11 +78,7 @@ function ListingCard({
                   <p className="listing-card__comparison-container-text">
                     Include in comparison
                   </p>
-                  <img
-                    className="icon-area"
-                    src={`${path}compare.png`}
-                    alt="bed-icon"
-                  />
+                  <img className="icon-area" src={Compare} alt="bed-icon" />
                 </div>
               </div>
             </div>

@@ -4,6 +4,10 @@
   flex: 1 1 85%;
   top: 156px;
 
+  :focus-visible {
+    outline: none;
+  }
+
   @media (max-width: 768px) {
     width: 100%;
   }
@@ -15,8 +19,11 @@
     position: absolute;
     right: 0;
   }
+
   &__marker-container {
+    //
   }
+
   &__marker-photo {
     width: 100px;
     height: 80px;
