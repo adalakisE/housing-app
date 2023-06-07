@@ -7,7 +7,8 @@ function ListingsWrapper() {
   const [list, setList] = useState([]);
 
   //use the local URL if you don't want to run the server
-  // const URL = "http://127.0.0.1:8887"; //local URL, you need 'Web Server for chrome' running
+  // you need 'Web Server for chrome' running in both scenarios
+  // const URL = "http://127.0.0.1:8887"; //local URL,
   const URL = "http://127.0.0.1:3001"; //nodejs server URL, you need the nodejs server running
 
   const dispatch = useDispatch();
