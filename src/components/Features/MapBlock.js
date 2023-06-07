@@ -1,10 +1,9 @@
 import React from "react";
 import { MapContainer, TileLayer, Marker, Tooltip } from "react-leaflet";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 function MapBlock() {
   const stateItems = useSelector((state) => state.storedItems);
-  const dispatch = useDispatch();
 
   const markersList = stateItems.map((item) => {
     return (

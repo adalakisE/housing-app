@@ -2,23 +2,27 @@ import React, { useState } from "react";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import { useDispatch } from "react-redux";
-import { filterByPrice, filterBySize } from "../../redux/actions/toDoActions";
+import { filterAll } from "../../redux/actions/toDoActions";
 
 function TopBarFilters() {
   const [filterPrice, setFilterPrice] = useState("");
   const [filterSize, setFilterSize] = useState("");
 
   const dispatch = useDispatch();
+  let tempPrice = 0; //how to make useState synchronous?
+  let tempSize = 0;
 
   function handleChange(e) {
+    console.log(filterPrice, filterSize);
     console.log(e.target);
     if (e.target.name === "Price") {
       setFilterPrice(e.target.value);
     } else if (e.target.name === "Size") {
       setFilterSize(e.target.value);
+      tempSize = e.target.value;
     }
-    dispatch(filterByPrice(filterPrice));
-    dispatch(filterBySize(filterSize));
+    dispatch(filterAll([tempPrice, tempSize]));
+    console.log(filterPrice, filterSize);
   }
 
   return (

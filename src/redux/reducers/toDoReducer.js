@@ -13,30 +13,29 @@ function actionFunction(state = initialState, action) {
         ...state,
         storedItems: action.payload,
       };
+
     case actionTypes.FILTERED_ITEMS:
       return {
         ...state,
         filteredItems: action.payload,
       };
-    case actionTypes.FILTER_BY_PRICE:
+
+    case actionTypes.FILTER_ALL:
       return {
         ...state,
-        filteredItems: state.filteredItems.filter(
-          (item) => item.price > action.payload
+        filteredItems: state.storedItems.filter(
+          (item) =>
+            item?.price > action.payload.price &&
+            item?.sqFt > action.payload.size * 10
         ),
       };
-    case actionTypes.FILTER_BY_SIZE:
-      return {
-        ...state,
-        filteredItems: state.filteredItems.filter(
-          (item) => item.sqFt > action.payload * 10
-        ),
-      };
+
     case actionTypes.ADD_TO_COMPARISON:
       return {
         ...state,
         itemsInComparison: [...state.itemsInComparison, action.payload],
       };
+
     case actionTypes.REMOVE_FROM_COMPARISON:
       return {
         ...state,
@@ -44,6 +43,7 @@ function actionFunction(state = initialState, action) {
           (item) => item !== action.payload
         ),
       };
+
     default:
       return state;
   }

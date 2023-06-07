@@ -14,17 +14,10 @@ export const filteredItems = (items) => {
   };
 };
 
-export const filterByPrice = (price) => {
+export const filterAll = ([price, size]) => {
   return {
-    type: actionTypes.FILTER_BY_PRICE,
-    payload: price,
-  };
-};
-
-export const filterBySize = (size) => {
-  return {
-    type: actionTypes.FILTER_BY_SIZE,
-    payload: size,
+    type: actionTypes.FILTER_ALL,
+    payload: { price, size },
   };
 };
 
