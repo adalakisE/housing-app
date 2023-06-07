@@ -7,8 +7,8 @@ function ListingsWrapper() {
   const [list, setList] = useState([]);
 
   //use the local URL if you don't want to run the server
-  // const URL = "http://127.0.0.1:8887"; //local URL, you need Web Server for chrome running
-  const URL = "http://127.0.0.1:3001"; //nodejs server URL
+  // const URL = "http://127.0.0.1:8887"; //local URL, you need 'Web Server for chrome' running
+  const URL = "http://127.0.0.1:3001"; //nodejs server URL, you need the nodejs server running
 
   const dispatch = useDispatch();
 
@@ -18,7 +18,7 @@ function ListingsWrapper() {
       .catch((err) => console.log(err));
 
     setList(response);
-    console.log(list); //why is list not updated directly with setlist?
+    console.log(list);
     dispatch(storeItems(response));
     dispatch(filteredItems(response));
   };
