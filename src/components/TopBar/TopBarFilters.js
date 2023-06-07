@@ -17,12 +17,13 @@ function TopBarFilters() {
     console.log(e.target);
     if (e.target.name === "Price") {
       setFilterPrice(e.target.value);
+      tempPrice = e.target.value;
     } else if (e.target.name === "Size") {
       setFilterSize(e.target.value);
       tempSize = e.target.value;
     }
     dispatch(filterAll([tempPrice, tempSize]));
-    console.log(filterPrice, filterSize);
+    console.log(tempPrice, tempSize);
   }
 
   return (
