@@ -2,6 +2,9 @@ import * as actionTypes from "../actions/actionTypes";
 
 const initialState = {
   storedItems: [],
+  storedPrice: 0,
+  storedSize: 0,
+  storedBedrooms: 0,
   filteredItems: [],
   itemsInComparison: [],
 };
@@ -20,13 +23,32 @@ function actionFunction(state = initialState, action) {
         filteredItems: action.payload,
       };
 
+    case actionTypes.STORE_PRICE:
+      return {
+        ...state,
+        storedPrice: action.payload,
+      };
+
+    case actionTypes.STORE_SIZE:
+      return {
+        ...state,
+        storedSize: action.payload,
+      };
+
+    case actionTypes.STORE_BEDROOMS:
+      return {
+        ...state,
+        storedBedrooms: action.payload,
+      };
+
     case actionTypes.FILTER_ALL:
       return {
         ...state,
         filteredItems: state.storedItems.filter(
           (item) =>
-            item?.price > action.payload.price &&
-            item?.sqFt > action.payload.size * 10
+            item?.price > state.storedPrice &&
+            item?.sqFt > state.storedSize * 10 &&
+            item?.bedrooms > state.storedBedrooms
         ),
       };
 

@@ -14,10 +14,29 @@ export const filteredItems = (items) => {
   };
 };
 
-export const filterAll = ([price, size]) => {
+export const storePrice = (price) => {
+  return {
+    type: actionTypes.STORE_PRICE,
+    payload: price,
+  };
+};
+export const storeSize = (size) => {
+  return {
+    type: actionTypes.STORE_SIZE,
+    payload: size,
+  };
+};
+export const storeBedrooms = (bedrooms) => {
+  return {
+    type: actionTypes.STORE_BEDROOMS,
+    payload: bedrooms,
+  };
+};
+
+export const filterAll = () => {
   return {
     type: actionTypes.FILTER_ALL,
-    payload: { price, size },
+    payload: "",
   };
 };
 
