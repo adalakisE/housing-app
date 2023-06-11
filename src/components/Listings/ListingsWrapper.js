@@ -10,7 +10,7 @@ function ListingsWrapper() {
   // you need 'Web Server for chrome' running in both scenarios
   // const URL = "http://127.0.0.1:8887"; //local URL,
   // const URL = "http://127.0.0.1:3001"; //nodejs server URL, you need the nodejs server running
-  const URL = "https://fox-house-backend.onrender.com/"; //live serve from Render.com
+  const URL = "https://fox-house-backend.onrender.com"; //live serve from Render.com
 
   const dispatch = useDispatch();
 
