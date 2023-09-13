@@ -1,5 +1,7 @@
 .view {
-  //no-style-for-now
+  &--loading {
+    opacity: 40%;
+  }
 }
 
 .middle-page-wrapper {
@@ -10,5 +12,9 @@
   @media (max-width: 768px) {
     align-items: center;
     flex-direction: column-reverse;
+  }
+
+  &--loading {
+    opacity: 40%;
   }
 }
