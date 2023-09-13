@@ -25,16 +25,11 @@ function MapBlock() {
 
   return (
     <div className="map__container">
-      <MapContainer
-        center={[37.9645, 23.7229]}
-        zoom={13}
-        scrollWheelZoom={true}
-      >
+      <MapContainer center={[37.9725, 23.722]} zoom={13} scrollWheelZoom={true}>
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        {/* <Marker position={[37.9645, 23.7229]}></Marker> */}
         {markersList}
       </MapContainer>
     </div>

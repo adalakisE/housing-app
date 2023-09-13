@@ -4,6 +4,17 @@
   }
 }
 
+.loading-layer {
+  opacity: 40%;
+  pointer-events: none;
+
+  &--hidden {
+    // display: none;
+    pointer-events: all;
+    opacity: 100%;
+  }
+}
+
 .middle-page-wrapper {
   display: flex;
   flex-direction: row;

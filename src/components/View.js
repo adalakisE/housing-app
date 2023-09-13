@@ -12,13 +12,13 @@ function View() {
   const stateItems = useSelector((state) => state.storedItems);
 
   return (
-    <div className={`view${stateItems.length ? "" : "--loading"}`}>
-      <TopBar />
-      <div
-        className={`middle-page-wrapper${stateItems.length ? "" : "--loading"}`}
-      >
-        <Listings />
-        <MapWrapper />
+    <div className="view">
+      <div className={`loading-layer${stateItems.length ? "--hidden" : ""}`}>
+        <TopBar />
+        <div className="middle-page-wrapper">
+          <Listings />
+          <MapWrapper />
+        </div>
       </div>
 
       <Box
@@ -26,7 +26,7 @@ function View() {
           position: "absolute",
           right: "calc(50vw - 48px)",
           top: "calc(50vh - 40px)",
-          display: () => ("stateItems.length" ? "none" : "block"),
+          display: () => (stateItems.length ? "none" : "block"),
         }}
       >
         <CircularProgress size={80} />
