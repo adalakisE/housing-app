@@ -92,25 +92,31 @@
 
   &__comparison {
     display: flex;
-    justify-content: flex-end;
-    font-size: 12px;
-    padding-bottom: 10px;
-  }
-
-  &__comparison-container {
-    display: flex;
     flex-direction: row;
     align-items: center;
+    font-size: 12px;
+    margin-bottom: 10px;
+    background-color: rgba(128, 128, 128, 0.1);
 
     &:hover {
       background-color: rgba(128, 128, 128, 0.132);
       border-radius: 3px;
-      transition: all 0.2s ease-in-out;
+      transition: all 0.2s ease-in;
       cursor: pointer;
+    }
+
+    &--full {
+      background-color: transparent;
+      pointer-events: none;
+
+      &:hover {
+        background-color: transparent;
+        cursor: default;
+      }
     }
   }
 
-  &__comparison-container-text {
+  &__comparison-text {
     padding: 5px 10px;
     margin-bottom: 0;
   }

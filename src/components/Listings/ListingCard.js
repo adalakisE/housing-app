@@ -1,4 +1,4 @@
-import React from "react";
+import { useState, React } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   addToComparison,
@@ -20,6 +20,8 @@ function ListingCard({
   price,
   area,
 }) {
+  let [inComparison, setInComparison] = useState(false);
+
   //dispatch actions to redux
   const stateItems = useSelector((state) => state.itemsInComparison);
   const dispatch = useDispatch();
@@ -30,6 +32,7 @@ function ListingCard({
     } else {
       dispatch(addToComparison(item));
     }
+    setInComparison((inComparison = !inComparison));
   };
 
   return (
@@ -71,15 +74,20 @@ function ListingCard({
                 ${price.toLocaleString("en")}
               </span>
               <div
-                className="listing-card__comparison"
+                className={`${
+                  stateItems.length < 3 ||
+                  stateItems.some((storedItem) => item.id === storedItem.id)
+                    ? "listing-card__comparison"
+                    : "listing-card__comparison listing-card__comparison--full"
+                }`}
                 onClick={() => handleClick(item)}
               >
-                <div className="listing-card__comparison-container">
-                  <p className="listing-card__comparison-container-text">
-                    Include in comparison
-                  </p>
-                  <img className="icon-area" src={Compare} alt="bed-icon" />
-                </div>
+                <p className="listing-card__comparison-text">
+                  {stateItems.some((storedItem) => item.id === storedItem.id)
+                    ? "Included in comparison"
+                    : "Compare"}
+                </p>
+                <img className="icon-area" src={Compare} alt="bed-icon" />
               </div>
             </div>
           </ul>
