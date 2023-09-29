@@ -42,9 +42,7 @@ function TopBarFilters() {
         inputProps={{ "aria-label": "Without label" }}
         onChange={handleChange}
       >
-        <MenuItem value="">
-          <em>Price</em>
-        </MenuItem>
+        <MenuItem value="">Price</MenuItem>
         <MenuItem value={900}>{`> $900`}</MenuItem>
         <MenuItem value={1100}>{`> $1100`}</MenuItem>
       </Select>
@@ -56,9 +54,7 @@ function TopBarFilters() {
         inputProps={{ "aria-label": "Without label" }}
         onChange={handleChange}
       >
-        <MenuItem value="">
-          <em>Size</em>
-        </MenuItem>
+        <MenuItem value="">Size</MenuItem>
         <MenuItem value={50}>{`> 50m2`}</MenuItem>
         <MenuItem value={100}>{`> 100m2`}</MenuItem>
       </Select>
@@ -70,9 +66,7 @@ function TopBarFilters() {
         inputProps={{ "aria-label": "Without label" }}
         onChange={handleChange}
       >
-        <MenuItem value="">
-          <em>Bedrooms</em>
-        </MenuItem>
+        <MenuItem value="">Bedrooms</MenuItem>
         <MenuItem value={1}>{`> 1`}</MenuItem>
         <MenuItem value={2}>{`> 2`}</MenuItem>
       </Select>
