@@ -10,13 +10,13 @@ function ListingsWrapper() {
   const dispatch = useDispatch();
 
   const getListings = async () => {
-    const response = await fetch(`${URL}/listings`)
+    const response = await fetch(`${URL}/feed/items`)
       .then((response) => response.json())
       .catch((err) => console.log(err));
 
-    if (response?.length) {
-      dispatch(storeItems(response));
-      dispatch(filteredItems(response));
+    if (response?.items.length) {
+      dispatch(storeItems(response.items));
+      dispatch(filteredItems(response.items));
     }
   };
 

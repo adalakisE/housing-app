@@ -1,13 +1,24 @@
 .comparison-footer {
+  display: flex;
+  flex-direction: column;
   border: 1px solid grey;
   position: sticky;
   bottom: 0;
   background-color: white;
   box-shadow: 0px -1px 9px rgba(128, 128, 128, 0.384);
   border: none;
-  height: 80px;
-  padding: 15px;
+  height: 100px;
+  padding: 0 15px 5px 15px;
   transition: all 0.2s ease-in-out;
+
+  &--expanded {
+    height: 200px;
+  }
+
+  &__expand-container {
+    margin: 0 auto;
+    padding: 5px 0;
+  }
 
   &__list-container {
     display: flex;
@@ -50,17 +61,23 @@
     padding: 5px 0;
   }
 
-  &__list-remove-btn {
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-end;
-    padding-right: 10px;
+  &__list-remove-container {
   }
 }
 
-.icon-area {
+.icon-area-close {
   width: 15px;
   height: 15px;
+  margin-right: 10px;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.icon-area-arrow {
+  width: 25px;
+  height: 25px;
   margin-right: 10px;
 
   &:hover {

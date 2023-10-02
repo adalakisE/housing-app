@@ -1,15 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { removeFromComparison } from "../../../redux/actions/toDoActions";
 import "./ComparisonFooterStyles.scss";
 import Close from "../../../api/Icons/close.png";
+import Arrow from "../../../api/Icons/down-arrow.png";
 
 function ComparisonFooter() {
   const stateItems = useSelector((state) => state.itemsInComparison);
   const dispatch = useDispatch();
 
+  const [expand, setExpand] = useState(false);
+
   const handleDelete = (item) => {
     dispatch(removeFromComparison(item));
+  };
+
+  const handleExpand = () => {
+    setExpand(!expand);
   };
 
   let itemsList = [];
@@ -33,7 +40,7 @@ function ComparisonFooter() {
         </div>
         <div className="comparison-footer__list-remove-container">
           <img
-            className="icon-area"
+            className="icon-area-close"
             src={Close}
             alt="close"
             onClick={() => handleDelete(item)}
@@ -42,7 +49,21 @@ function ComparisonFooter() {
       </li>
     ));
     return (
-      <div className="comparison-footer">
+      <div
+        className={`${
+          expand
+            ? "comparison-footer comparison-footer--expanded"
+            : "comparison-footer"
+        }`}
+      >
+        <div className="comparison-footer__expand-container">
+          <img
+            className="icon-area-arrow"
+            src={Arrow}
+            alt="expand"
+            onClick={() => handleExpand()}
+          />
+        </div>
         <ul className="comparison-footer__list-container">{itemsList}</ul>
       </div>
     );
