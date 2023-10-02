@@ -2,6 +2,10 @@
   &--loading {
     opacity: 40%;
   }
+
+  &--landing-page {
+    // background-image: url("../api/images/background.webp");
+  }
 }
 
 .loading-layer {
@@ -9,7 +13,6 @@
   pointer-events: none;
 
   &--hidden {
-    // display: none;
     pointer-events: all;
     opacity: 100%;
   }

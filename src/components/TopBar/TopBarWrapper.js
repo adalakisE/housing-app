@@ -1,20 +1,28 @@
 import React from "react";
-
+import { useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
+import logo from "../../api/images/logo.jpg";
+import Filters from "../Filters/Filters";
+import SearchBar from "../SearchBar/SearchBar";
+import UserProfile from "../UserProfile/UserProfile";
 import "./TopBarStyles.scss";
-import logo from "../../images/logo.jpg";
-import TopBarFilters from "./TopBarFilters";
 
 function TopBarWrapper() {
+  const currentRoute = useLocation().pathname;
+
   return (
     <div className="top-bar__container">
-      <div className="top-bar">
+      <div className="top-bar__items-container">
         <div className="top-bar__logo-container">
-          <img className="top-bar__logo-icon" src={logo} alt="logo" />
+          <Link to="/landingpage">
+            <img className="top-bar__logo-icon" src={logo} alt="logo" />
+          </Link>
           <h3 className="top-bar__logo-text">Fox House</h3>
         </div>
-        <input className="top-bar__search-container" placeholder="Search" />
+        {currentRoute === "/mainpage" ? <SearchBar /> : <></>}
+        <UserProfile />
       </div>
-      <TopBarFilters />
+      {currentRoute === "/mainpage" ? <Filters /> : <></>}
     </div>
   );
 }

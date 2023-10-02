@@ -8,8 +8,9 @@ import {
   storeBedrooms,
   filterAll,
 } from "../../redux/actions/toDoActions";
+import "./FiltersStyles.scss";
 
-function TopBarFilters() {
+function Filters() {
   const [filterPrice, setFilterPrice] = useState("");
   const [filterSize, setFilterSize] = useState("");
   const [filterBedroom, setfilterBedroom] = useState("");
@@ -33,9 +34,9 @@ function TopBarFilters() {
   }
 
   return (
-    <div className="top-bar__filters-container">
+    <div className="filters__container">
       <Select
-        className="top-bar__filter"
+        className="filters__item"
         value={filterPrice}
         name="Price"
         displayEmpty
@@ -47,7 +48,7 @@ function TopBarFilters() {
         <MenuItem value={1100}>{`> $1100`}</MenuItem>
       </Select>
       <Select
-        className="top-bar__filter"
+        className="filters__item"
         value={filterSize}
         name="Size"
         displayEmpty
@@ -59,7 +60,7 @@ function TopBarFilters() {
         <MenuItem value={100}>{`> 100m2`}</MenuItem>
       </Select>
       <Select
-        className="top-bar__filter"
+        className="filters__item"
         value={filterBedroom}
         name="Bedrooms"
         displayEmpty
@@ -74,4 +75,4 @@ function TopBarFilters() {
   );
 }
 
-export default TopBarFilters;
+export default Filters;
