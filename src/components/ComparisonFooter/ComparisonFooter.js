@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { removeFromComparison } from "../../../redux/actions/toDoActions";
+import { removeFromComparison } from "../../redux/actions/toDoActions";
 import "./ComparisonFooterStyles.scss";
-import Close from "../../../api/Icons/close.png";
-import Arrow from "../../../api/Icons/down-arrow.png";
+import Close from "../../api/Icons/close.png";
+import Arrow from "../../api/Icons/down-arrow.png";
 
 function ComparisonFooter() {
   const stateItems = useSelector((state) => state.itemsInComparison);
