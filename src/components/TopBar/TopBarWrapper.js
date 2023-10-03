@@ -1,7 +1,7 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
-import logo from "../../api/images/logo.jpg";
+import logo from "../../api/images/logo.png";
 import Filters from "../Filters/Filters";
 import SearchBar from "../SearchBar/SearchBar";
 import UserProfile from "../UserProfile/UserProfile";
@@ -17,12 +17,12 @@ function TopBarWrapper() {
           <Link to="/landingpage">
             <img className="top-bar__logo-icon" src={logo} alt="logo" />
           </Link>
-          <h3 className="top-bar__logo-text">Fox House</h3>
+          {/* <h3 className="top-bar__logo-text">Fox House</h3> */}
         </div>
-        {currentRoute === "/mainpage" ? <SearchBar /> : <></>}
+        {currentRoute !== "/mainpage" ? <></> : <SearchBar />}
         <UserProfile />
       </div>
-      {currentRoute === "/mainpage" ? <Filters /> : <></>}
+      {currentRoute !== "/mainpage" ? <></> : <Filters />}
     </div>
   );
 }

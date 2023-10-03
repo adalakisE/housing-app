@@ -1,3 +1,5 @@
+$user-profile-color: #f29e7e;
+
 .user-profile {
   &__container {
     margin-right: 20px;
@@ -7,4 +9,23 @@
 .user-icon {
   width: 50px;
   height: 50px;
+}
+
+.user-profile-button {
+  &__container {
+    border-radius: 50px;
+    color: $user-profile-color;
+    text-wrap: nowrap;
+    margin-left: 20px;
+    border: thin solid $user-profile-color;
+    border-width: 2px;
+    padding: 5px 20px;
+    font-weight: 700;
+
+    &:hover {
+      background-color: $user-profile-color;
+      color: white;
+      transition: all 0.3s;
+    }
+  }
 }

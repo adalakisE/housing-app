@@ -15,36 +15,36 @@ function View() {
   const currentRoute = useLocation().pathname;
 
   return (
-    <div
-      className={`view ${
-        currentRoute === "/landingpage" ? "view--landing-page" : ""
-      }`}
-    >
+    <div className="view">
       <div
         className={`loading-layer${
           stateItems.length || currentRoute === "/landingpage" ? "--hidden" : ""
         }`}
       >
-        <TopBar />
-        <div className="middle-page-wrapper">
-          <Routes>
-            <Route
-              exact
-              path="/landingpage"
-              element={<LandingPageWrapper />}
-            ></Route>
-            <Route
-              exact
-              path="/mainpage"
-              element={
-                <>
+        <Routes>
+          <Route
+            exact
+            path="/landingpage"
+            element={
+              <>
+                <LandingPageWrapper />
+              </>
+            }
+          ></Route>
+          <Route
+            exact
+            path="/mainpage"
+            element={
+              <>
+                <TopBar />
+                <div className="middle-page-wrapper">
                   <ListingsWrapper />
                   <MapWrapper />
-                </>
-              }
-            ></Route>
-          </Routes>
-        </div>
+                </div>
+              </>
+            }
+          ></Route>
+        </Routes>
       </div>
       <LoadingSpinner />
       <ComparisonFooter />

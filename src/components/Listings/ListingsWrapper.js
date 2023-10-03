@@ -9,10 +9,20 @@ function ListingsWrapper() {
 
   const dispatch = useDispatch();
 
+  const request = {
+    price: useSelector((state) => state.storedPrice),
+    size: useSelector((state) => state.storedSize),
+    bedrooms: useSelector((state) => state.storedBedrooms),
+  };
+
   const getListings = async () => {
-    const response = await fetch(`${URL}/feed/items`)
+    const response = await fetch(
+      `${URL}/feed/items?price=${request.price}&size=${request.size}&bedrooms=${request.bedrooms}`
+    )
       .then((response) => response.json())
       .catch((err) => console.log(err));
+
+    console.log(response);
 
     if (response?.items.length) {
       dispatch(storeItems(response.items));
