@@ -33,6 +33,13 @@ export const storeBedrooms = (bedrooms) => {
   };
 };
 
+export const storeTitle = (title) => {
+  return {
+    type: actionTypes.STORE_TITLE,
+    payload: title,
+  };
+};
+
 export const filterAll = () => {
   return {
     type: actionTypes.FILTER_ALL,
@@ -51,5 +58,11 @@ export const removeFromComparison = (item) => {
   return {
     type: actionTypes.REMOVE_FROM_COMPARISON,
     payload: item,
+  };
+};
+
+export const resetState = () => {
+  return {
+    type: actionTypes.RESET_STATE,
   };
 };

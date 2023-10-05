@@ -1,7 +1,8 @@
 .search-bar {
   &__container {
     display: flex;
-    flex: 1 1 100%;
+    width: 100%;
+    max-width: 660px;
   }
 
   &__input {
@@ -12,5 +13,25 @@
     padding: 20px;
     width: 100%;
     outline: none;
+  }
+
+  &__search-btn-container {
+    padding: 9px 12px;
+    margin-left: 10px;
+    border-radius: 4px;
+    background-color: #f29e7e;
+    transition: all 0.2s;
+    border: transparent;
+    outline: none;
+
+    &:hover {
+      background-color: #f68c62;
+    }
+  }
+
+  &__search-btn-icon {
+    width: 20px;
+    height: 20px;
+    filter: brightness(0) invert(1);
   }
 }

@@ -6,7 +6,7 @@ import Close from "../../api/Icons/close.png";
 import Arrow from "../../api/Icons/down-arrow.png";
 
 function ComparisonFooter() {
-  const stateItems = useSelector((state) => state.itemsInComparison);
+  const stateItems = useSelector((state) => state.appReducer.itemsInComparison);
   const dispatch = useDispatch();
 
   const [expand, setExpand] = useState(false);
@@ -21,7 +21,7 @@ function ComparisonFooter() {
 
   let itemsList = [];
 
-  if (Object.keys(stateItems).length !== 0) {
+  if (Object.keys(stateItems)?.length !== 0) {
     itemsList = stateItems.map((item) => (
       <li key={item.id} className="comparison-footer__list-item">
         <div className="comparison-footer__left-container">
@@ -48,6 +48,7 @@ function ComparisonFooter() {
         </div>
       </li>
     ));
+
     return (
       <div
         className={`${

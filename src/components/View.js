@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import TopBar from "./TopBar/TopBarWrapper";
 import ListingsWrapper from "./Listings/ListingsWrapper";
-import MapWrapper from "./Features/MapWrapper";
+import MapWrapper from "./Map/MapWrapper";
 import ComparisonFooter from "./ComparisonFooter/ComparisonFooter";
 import LoadingSpinner from "./LoadingSpinner/LoadingSpinner";
 import { useSelector } from "react-redux";
@@ -11,20 +11,20 @@ import LandingPageWrapper from "./LandingPage/LandingPageWrapper";
 import "./ViewStyles.scss";
 
 function View() {
-  const stateItems = useSelector((state) => state.storedItems);
+  const stateItems = useSelector((state) => state.appReducer.storedItems);
   const currentRoute = useLocation().pathname;
 
   return (
     <div className="view">
       <div
         className={`loading-layer${
-          stateItems.length || currentRoute === "/landingpage" ? "--hidden" : ""
+          stateItems?.length || currentRoute === "/" ? "--hidden" : ""
         }`}
       >
         <Routes>
           <Route
             exact
-            path="/landingpage"
+            path="/"
             element={
               <>
                 <LandingPageWrapper />
@@ -32,11 +32,10 @@ function View() {
             }
           ></Route>
           <Route
-            exact
-            path="/mainpage"
+            path="/mainpage/:id"
             element={
               <>
-                <TopBar />
+                <TopBar hasSearch={true} hasFilters={true} />
                 <div className="middle-page-wrapper">
                   <ListingsWrapper />
                   <MapWrapper />

@@ -3,7 +3,7 @@ import { MapContainer, TileLayer, Marker, Tooltip } from "react-leaflet";
 import { useSelector } from "react-redux";
 
 function MapBlock() {
-  const stateItems = useSelector((state) => state.storedItems);
+  const stateItems = useSelector((state) => state.appReducer.storedItems);
 
   const markersList = stateItems.map((item) => {
     return (

@@ -9,8 +9,13 @@ const initialState = {
   itemsInComparison: [],
 };
 
-function actionFunction(state = initialState, action) {
+function appReducer(state = initialState, action) {
   switch (action.type) {
+    case actionTypes.RESET_STATE:
+      return {
+        ...initialState,
+      };
+
     case actionTypes.STORE_ITEMS:
       return {
         ...state,
@@ -39,6 +44,12 @@ function actionFunction(state = initialState, action) {
       return {
         ...state,
         storedBedrooms: action.payload,
+      };
+
+    case actionTypes.STORE_TITLE:
+      return {
+        ...state,
+        storedTitle: action.payload,
       };
 
     case actionTypes.FILTER_ALL:
@@ -71,4 +82,4 @@ function actionFunction(state = initialState, action) {
   }
 }
 
-export default actionFunction;
+export default appReducer;

@@ -4,11 +4,11 @@ import {
   addToComparison,
   removeFromComparison,
 } from "../../redux/actions/toDoActions";
-import "./ListingsStyles.scss";
 import Bed from "../../api/Icons/bed.png";
 import Placeholder from "../../api/Icons/placeholder.png";
 import Area from "../../api/Icons/area.png";
 import Compare from "../../api/Icons/compare.png";
+import "./ListingsStyles.scss";
 
 function ListingCard({
   item,
@@ -22,8 +22,7 @@ function ListingCard({
 }) {
   let [inComparison, setInComparison] = useState(false);
 
-  //dispatch actions to redux
-  const stateItems = useSelector((state) => state.itemsInComparison);
+  const stateItems = useSelector((state) => state.appReducer.itemsInComparison);
   const dispatch = useDispatch();
 
   const handleClick = (clickedItem) => {
@@ -82,11 +81,11 @@ function ListingCard({
                 }`}
                 onClick={() => handleClick(item)}
               >
-                <p className="listing-card__comparison-text">
+                <span className="listing-card__comparison-text">
                   {stateItems.some((storedItem) => item.id === storedItem.id)
                     ? "Included in comparison"
                     : "Compare"}
-                </p>
+                </span>
                 <img className="icon-area" src={Compare} alt="bed-icon" />
               </div>
             </div>

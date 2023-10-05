@@ -5,7 +5,7 @@ import { useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 function LoadingSpinner() {
-  const stateItems = useSelector((state) => state.storedItems);
+  const stateItems = useSelector((state) => state.appReducer.storedItems);
   const currentRoute = useLocation().pathname;
 
   return (
@@ -15,7 +15,9 @@ function LoadingSpinner() {
         right: "calc(50vw - 48px)",
         top: "calc(50vh - 40px)",
         display: () =>
-          !stateItems.length && currentRoute === "/mainpage" ? "block" : "none",
+          !stateItems?.length && currentRoute === "/mainpage"
+            ? "block"
+            : "none",
       }}
     >
       <CircularProgress size={80} />

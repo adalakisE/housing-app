@@ -5,11 +5,15 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background-image: url("../../api/images/background2.jpg");
+  // background-image: url("../../api/images/background3.jpg");
+  background-color: rgba(188, 88, 88, 0.38);
   background-size: cover;
   background-repeat: no-repeat;
 
   &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
     flex: 1 1 100%;
     margin: 0 50px;
     padding: 20px;
@@ -18,7 +22,7 @@
     max-width: 700px;
     // top: 50%;
     box-shadow: 0px 2px 3px rgba(128, 128, 128, 0.384);
-    border-radius: 20px;
+    border-radius: 15px;
     background-color: white;
   }
 

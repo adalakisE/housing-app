@@ -1,42 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import ListingCard from "./ListingCard";
-import { useDispatch, useSelector } from "react-redux";
-import { filteredItems, storeItems } from "../../redux/actions/toDoActions";
+import { useSelector } from "react-redux";
 
 function ListingsWrapper() {
-  const URL = "http://localhost:3030"; //nodejs server with 'Simple Web Server' for Windows
-  // const URL = "https://fox-house-backend.onrender.com"; //live serve from Render.com
-
-  const dispatch = useDispatch();
-
-  const request = {
-    price: useSelector((state) => state.storedPrice),
-    size: useSelector((state) => state.storedSize),
-    bedrooms: useSelector((state) => state.storedBedrooms),
-  };
-
-  const getListings = async () => {
-    const response = await fetch(
-      `${URL}/feed/items?price=${request.price}&size=${request.size}&bedrooms=${request.bedrooms}`
-    )
-      .then((response) => response.json())
-      .catch((err) => console.log(err));
-
-    console.log(response);
-
-    if (response?.items.length) {
-      dispatch(storeItems(response.items));
-      dispatch(filteredItems(response.items));
-    }
-  };
-
-  //runs getListings() when the component loads
-  useEffect(() => {
-    getListings();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  const stateItems = useSelector((state) => state.filteredItems);
+  const stateItems = useSelector((state) => state.appReducer.filteredItems);
 
   const items = stateItems.map((item) => (
     <li key={item.id} className="listings__list">

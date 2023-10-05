@@ -17,6 +17,7 @@ function Filters() {
 
   const dispatch = useDispatch();
 
+  /* MAKE IT FIRE THE API CALL ON CHANGE */
   function handleChange(e) {
     console.log(e.target);
     if (e.target.name === "Price") {
