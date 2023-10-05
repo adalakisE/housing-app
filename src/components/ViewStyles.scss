@@ -3,28 +3,3 @@
     opacity: 40%;
   }
 }
-
-.loading-layer {
-  opacity: 40%;
-  pointer-events: none;
-
-  &--hidden {
-    pointer-events: all;
-    opacity: 100%;
-  }
-}
-
-.middle-page-wrapper {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-
-  @media (max-width: 768px) {
-    align-items: center;
-    flex-direction: column-reverse;
-  }
-
-  &--loading {
-    opacity: 40%;
-  }
-}

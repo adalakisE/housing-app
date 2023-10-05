@@ -25,7 +25,7 @@ function SearchBar() {
 
   const getListings = async () => {
     const response = await fetch(
-      `${URL}/feed/items?title=${request.title}&price=${request.price}&size=${request.size}&bedrooms=${request.bedrooms}`
+      `${URL}/fee/items?title=${request.title}&price=${request.price}&size=${request.size}&bedrooms=${request.bedrooms}`
     )
       .then((response) => response.json())
       .catch((err) => console.log(err));
