@@ -7,13 +7,6 @@ export const storeItems = (items) => {
   };
 };
 
-export const filteredItems = (items) => {
-  return {
-    type: actionTypes.FILTERED_ITEMS,
-    payload: items,
-  };
-};
-
 export const storePrice = (price) => {
   return {
     type: actionTypes.STORE_PRICE,
@@ -40,13 +33,6 @@ export const storeTitle = (title) => {
   };
 };
 
-export const filterAll = () => {
-  return {
-    type: actionTypes.FILTER_ALL,
-    payload: "",
-  };
-};
-
 export const addToComparison = (item) => {
   return {
     type: actionTypes.ADD_TO_COMPARISON,
@@ -58,6 +44,13 @@ export const removeFromComparison = (item) => {
   return {
     type: actionTypes.REMOVE_FROM_COMPARISON,
     payload: item,
+  };
+};
+
+export const fetching = (status) => {
+  return {
+    type: actionTypes.FETCHING,
+    payload: status,
   };
 };
 

@@ -79,8 +79,14 @@
   width: 25px;
   height: 25px;
   margin-right: 10px;
+  transform: rotate(180deg);
+  transition: all 0.1s;
 
   &:hover {
     cursor: pointer;
+  }
+
+  &--expanded {
+    transform: rotate(0deg);
   }
 }

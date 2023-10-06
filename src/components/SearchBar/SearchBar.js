@@ -3,7 +3,8 @@ import Search from "../../api/Icons/search.png";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { storeTitle } from "../../redux/actions/toDoActions";
-import { filteredItems, storeItems } from "../../redux/actions/toDoActions";
+import { storeItems } from "../../redux/actions/toDoActions";
+import { fetching } from "../../redux/actions/toDoActions";
 import "./SearchBarStyles.scss";
 
 const URL = "http://localhost:5500"; //nodejs server with 'Simple Web Server' for Windows
@@ -24,18 +25,16 @@ function SearchBar() {
   };
 
   const getListings = async () => {
+    dispatch(fetching(true));
     const response = await fetch(
-      `${URL}/fee/items?title=${request.title}&price=${request.price}&size=${request.size}&bedrooms=${request.bedrooms}`
+      `${URL}/feed/items?title=${request.title}&price=${request.price}&size=${request.size}&bedrooms=${request.bedrooms}`
     )
       .then((response) => response.json())
+      .then((data) => dispatch(storeItems(data.items)))
+      .then(() => dispatch(fetching(false)))
       .catch((err) => console.log(err));
 
     console.log(response);
-
-    if (response?.items.length) {
-      dispatch(storeItems(response.items));
-      dispatch(filteredItems(response.items));
-    }
   };
 
   function handleChange(e) {

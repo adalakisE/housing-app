@@ -13,7 +13,7 @@ function LoadingSpinner() {
         position: "absolute",
         right: "calc(50vw - 48px)",
         top: "calc(50vh - 40px)",
-        display: () => (!stateItems?.length ? "block" : "none"),
+        display: () => (!stateItems ? "block" : "none"),
       }}
     >
       <CircularProgress size={80} />

@@ -12,11 +12,7 @@ function MainPageWrapper() {
 
   return (
     <div className="main-page">
-      <div
-        className={`main-page__loading-layer${
-          stateItems?.length ? "--hidden" : ""
-        }`}
-      >
+      <div className="main-page--hidden">
         <TopBar />
         <div className="main-page__middle-page-wrapper">
           <ListingsWrapper />

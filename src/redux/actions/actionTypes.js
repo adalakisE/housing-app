@@ -7,4 +7,5 @@ export const STORE_TITLE = "STORE_TITLE";
 export const FILTER_ALL = "FILTER_ALL";
 export const ADD_TO_COMPARISON = "ADD_TO_COMPARISON";
 export const REMOVE_FROM_COMPARISON = "REMOVE_FROM_COMPARISON";
+export const FETCHING = "FETCHING";
 export const RESET_STATE = "RESET_STATE";

@@ -5,8 +5,8 @@ const initialState = {
   storedPrice: 0,
   storedSize: 0,
   storedBedrooms: 0,
-  filteredItems: [],
   itemsInComparison: [],
+  fetching: false,
 };
 
 function appReducer(state = initialState, action) {
@@ -20,12 +20,6 @@ function appReducer(state = initialState, action) {
       return {
         ...state,
         storedItems: action.payload,
-      };
-
-    case actionTypes.FILTERED_ITEMS:
-      return {
-        ...state,
-        filteredItems: action.payload,
       };
 
     case actionTypes.STORE_PRICE:
@@ -52,17 +46,6 @@ function appReducer(state = initialState, action) {
         storedTitle: action.payload,
       };
 
-    case actionTypes.FILTER_ALL:
-      return {
-        ...state,
-        filteredItems: state.storedItems.filter(
-          (item) =>
-            item?.price > state.storedPrice &&
-            item?.sqFt > state.storedSize * 10 &&
-            item?.bedrooms > state.storedBedrooms
-        ),
-      };
-
     case actionTypes.ADD_TO_COMPARISON:
       return {
         ...state,
@@ -75,6 +58,12 @@ function appReducer(state = initialState, action) {
         itemsInComparison: state.itemsInComparison.filter(
           (item) => item !== action.payload
         ),
+      };
+
+    case actionTypes.FETCHING:
+      return {
+        ...state,
+        fetching: action.payload,
       };
 
     default:

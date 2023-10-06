@@ -25,6 +25,11 @@
   &__logo-icon {
     height: 50px;
     margin-right: 20px;
+
+    &:hover {
+      transform: rotate(30deg);
+      transition: all 0.1s;
+    }
   }
 
   &__logo-text {

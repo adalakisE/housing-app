@@ -59,7 +59,11 @@ function ComparisonFooter() {
       >
         <div className="comparison-footer__expand-container">
           <img
-            className="icon-area-arrow"
+            className={`${
+              expand
+                ? "icon-area-arrow icon-area-arrow--expanded"
+                : "icon-area-arrow"
+            }`}
             src={Arrow}
             alt="expand"
             onClick={() => handleExpand()}

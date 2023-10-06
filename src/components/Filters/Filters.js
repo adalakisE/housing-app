@@ -1,74 +1,64 @@
-import React, { useState } from "react";
+import React from "react";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
-import { useDispatch } from "react-redux";
-import {
-  storePrice,
-  storeSize,
-  storeBedrooms,
-  filterAll,
-} from "../../redux/actions/toDoActions";
+import FormControl from "@mui/material/FormControl";
+import { useDispatch, useSelector } from "react-redux";
 import "./FiltersStyles.scss";
 
 function Filters() {
-  const [filterPrice, setFilterPrice] = useState("");
-  const [filterSize, setFilterSize] = useState("");
-  const [filterBedroom, setfilterBedroom] = useState("");
-
   const dispatch = useDispatch();
+  const storedPrice = useSelector((state) => state.appReducer.storedPrice);
+  const storedSize = useSelector((state) => state.appReducer.storedSize);
+  const storedBedrooms = useSelector(
+    (state) => state.appReducer.storedBedrooms
+  );
 
   /* MAKE IT FIRE THE API CALL ON CHANGE */
   function handleChange(e) {
-    console.log(e.target);
-    if (e.target.name === "Price") {
-      setFilterPrice(e.target.value);
-      dispatch(storePrice(e.target.value));
-    } else if (e.target.name === "Size") {
-      setFilterSize(e.target.value);
-      dispatch(storeSize(e.target.value));
-    } else if (e.target.name === "Bedrooms") {
-      setfilterBedroom(e.target.value);
-      dispatch(storeBedrooms(e.target.value));
-    }
-
-    dispatch(filterAll());
+    /* constructing the redux action to dispatch */
+    dispatch({
+      type: `STORE_${e.target.name.toUpperCase()}`,
+      payload: e.target.value,
+    });
   }
 
   return (
     <div className="filters__container">
+      <FormControl>
+        <Select
+          className="filters__item"
+          value={storedPrice}
+          name="Price"
+          displayEmpty
+          inputProps={{ "aria-label": "Without label" }}
+          onChange={handleChange}
+        >
+          <MenuItem value={0}>{`Price`}</MenuItem>
+          <MenuItem value={900}>{`> $900`}</MenuItem>
+          <MenuItem value={1100}>{`> $1100`}</MenuItem>
+        </Select>
+      </FormControl>
       <Select
         className="filters__item"
-        value={filterPrice}
-        name="Price"
-        displayEmpty
-        inputProps={{ "aria-label": "Without label" }}
-        onChange={handleChange}
-      >
-        <MenuItem value="">Price</MenuItem>
-        <MenuItem value={900}>{`> $900`}</MenuItem>
-        <MenuItem value={1100}>{`> $1100`}</MenuItem>
-      </Select>
-      <Select
-        className="filters__item"
-        value={filterSize}
+        value={storedSize}
         name="Size"
         displayEmpty
         inputProps={{ "aria-label": "Without label" }}
         onChange={handleChange}
       >
-        <MenuItem value="">Size</MenuItem>
+        <MenuItem value={0}>{`Size`}</MenuItem>
         <MenuItem value={50}>{`> 50m2`}</MenuItem>
         <MenuItem value={100}>{`> 100m2`}</MenuItem>
       </Select>
       <Select
         className="filters__item"
-        value={filterBedroom}
+        value={storedBedrooms}
         name="Bedrooms"
         displayEmpty
         inputProps={{ "aria-label": "Without label" }}
         onChange={handleChange}
       >
-        <MenuItem value="">Bedrooms</MenuItem>
+        <MenuItem value={0}>{`Bedrooms`}</MenuItem>
         <MenuItem value={1}>{`> 1`}</MenuItem>
         <MenuItem value={2}>{`> 2`}</MenuItem>
       </Select>
