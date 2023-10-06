@@ -15,8 +15,6 @@ function SearchBar() {
 
   const state = useSelector((state) => state.appReducer);
 
-  const [inputField, setInputField] = useState("");
-
   const request = {
     price: state.storedPrice,
     size: state.storedSize,
@@ -38,14 +36,13 @@ function SearchBar() {
   };
 
   function handleChange(e) {
-    setInputField(e.target.value);
     dispatch(storeTitle(e.target.value));
   }
 
   return (
     <div className="search-bar__container">
       <input
-        value={inputField}
+        value={state.storedTitle}
         className="search-bar__input"
         placeholder="Search"
         onChange={handleChange}
