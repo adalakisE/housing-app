@@ -49,6 +49,10 @@
 
     border-radius: 10px;
     // max-width: 550px;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+    }
   }
 
   &__photo {
@@ -66,6 +70,10 @@
     flex-direction: column;
     width: 100%;
     padding-right: 10px;
+
+    @media (max-width: 768px) {
+      padding-left: 20px;
+    }
   }
 
   &__body-title {
