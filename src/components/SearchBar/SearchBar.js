@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Search from "../../api/Icons/search.png";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
