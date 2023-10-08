@@ -42,13 +42,14 @@ function ListingCard({
         src={imgSrc}
         alt={imgSrc}
       />
+      {/* USE THIS FOR MOBILE TEXT ON PHOTO */}
+      {/* <li className="listing-card__body-description-mobile">
+        <div>{description}</div>
+      </li> */}
       <div className="listing-card__body">
         <div className="listing-card__body-title">{title}</div>
-        <div className="listing-card__body-description">
-          <ul style={{ listStyleType: "none" }}>
-            <li style={{ paddingBottom: "10px" }}>
-              <div>{description}</div>
-            </li>
+        <div className="listing-card__body-content">
+          <ul className="listing-card__body-list-ul">
             <li className="listing-card__body-list-item">
               <img
                 className="icon-area"
@@ -61,10 +62,7 @@ function ListingCard({
               <img className="icon-area" src={Area} alt="area-icon" />
               {size / 10}m<sup>2</sup>
             </li>
-            <li
-              className="listing-card__body-list-item"
-              style={{ paddingBottom: "10px" }}
-            >
+            <li className="listing-card__body-list-item">
               <img className="icon-area" src={Bed} alt="bed-icon" />
               {bedroom} apartment
             </li>
