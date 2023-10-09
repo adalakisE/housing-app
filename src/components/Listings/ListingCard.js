@@ -48,6 +48,9 @@ function ListingCard({
       </li> */}
       <div className="listing-card__body">
         <div className="listing-card__body-title">{title}</div>
+        <li className="listing-card__body-description">
+          <p className="listing-card__body-description-text">{description}</p>
+        </li>
         <div className="listing-card__body-content">
           <ul className="listing-card__body-list-ul">
             <li className="listing-card__body-list-item">

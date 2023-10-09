@@ -1,3 +1,5 @@
+$listing-description-font-size: 14px !default;
+
 .listings {
   &__container {
     display: flex;
@@ -113,6 +115,11 @@
     @media (max-width: 768px) {
       display: none;
     }
+  }
+
+  &__body-description-text {
+    font-size: $listing-description-font-size;
+    margin-bottom: 0;
   }
 
   &__body-description-mobile {

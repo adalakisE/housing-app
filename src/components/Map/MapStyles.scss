@@ -3,6 +3,7 @@
   height: calc(100vh - 160px);
   flex: 1 1 85%;
   top: 156px;
+  max-width: 60%;
 
   :focus-visible {
     outline: none;
