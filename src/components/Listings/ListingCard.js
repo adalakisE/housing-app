@@ -45,14 +45,14 @@ function ListingCard({
           alt={`img-alt: ${item.id}`}
         />
         {/* USE THIS FOR MOBILE TEXT ON PHOTO */}
-        {/* <li className="listing-card__body-description-mobile">
+        {/* <div className="listing-card__body-description-mobile">
         <div>{description}</div>
-      </li> */}
+      </div> */}
         <div className="listing-card__body">
           <div className="listing-card__body-title">{title}</div>
-          <li className="listing-card__body-description">
+          <div className="listing-card__body-description">
             <p className="listing-card__body-description-text">{description}</p>
-          </li>
+          </div>
           <div className="listing-card__body-content">
             <ul className="listing-card__body-list-ul">
               <li className="listing-card__body-list-item">

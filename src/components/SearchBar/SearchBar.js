@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Search from "../../api/Icons/search.png";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { storeTitle } from "../../redux/actions/toDoActions";
 import { storeItems } from "../../redux/actions/toDoActions";
 import { fetching } from "../../redux/actions/toDoActions";
+import store from "../../redux/store/configureStore";
 import "./SearchBarStyles.scss";
 
 // const URL = "http://localhost:5500"; //nodejs server with 'Simple Web Server' for Windows
@@ -32,12 +33,37 @@ function SearchBar() {
       .then(() => dispatch(fetching(false)))
       .catch((err) => console.log(err));
 
-    console.log(response);
+    return response;
   };
 
   function handleChange(e) {
     dispatch(storeTitle(e.target.value));
   }
+
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      getListings();
+    }
+  };
+
+  useEffect(() => {
+    const unsubscribe = store.subscribe(() => {
+      // Check if filters have changed
+      const filtersChanged = state.appReducer.filtersChanged;
+
+      if (filtersChanged) {
+        // Reset the filtersChanged state in the Redux store
+        dispatch({ type: "RESET_FILTERS_CHANGED" });
+
+        // Call getListings when filters change
+        getListings();
+      }
+    });
+
+    return () => {
+      unsubscribe();
+    };
+  }, [dispatch, state.appReducer.filtersChanged]);
 
   return (
     <div className="search-bar__container">
@@ -46,6 +72,7 @@ function SearchBar() {
         className="search-bar__input"
         placeholder="Search"
         onChange={handleChange}
+        onKeyDown={handleKeyPress}
       />
       <Link
         to={`/mainpage/search?title=${request.title}&price=${request.price}&size=${request.size}&bedrooms=${request.bedrooms}`}

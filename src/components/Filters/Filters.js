@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import FormControl from "@mui/material/FormControl";
@@ -13,14 +13,33 @@ function Filters() {
     (state) => state.appReducer.storedBedrooms
   );
 
+  let priceRange = [700, 900, 1300, 1900, 2800, 3200];
+  let sizeRange = [50, 70, 110, 150, 210, 290];
+  let bedroomRange = [1, 2, 3, 4];
+
+  priceRange = priceRange.map((price) => (
+    <MenuItem value={price}>{`> $ ${price}`}</MenuItem>
+  ));
+  sizeRange = sizeRange.map((size) => (
+    <MenuItem value={size}>{`> ${size} sqm2`}</MenuItem>
+  ));
+  bedroomRange = bedroomRange.map((bedroom) => (
+    <MenuItem value={bedroom}>{`> ${bedroom}`}</MenuItem>
+  ));
+
   /* MAKE IT FIRE THE API CALL ON CHANGE */
+  /* constructing the redux action to dispatch */
   function handleChange(e) {
-    /* constructing the redux action to dispatch */
     dispatch({
       type: `STORE_${e.target.name.toUpperCase()}`,
       payload: e.target.value,
     });
   }
+
+  // useEffect(() => {
+  //   // Dispatch an action to indicate a filter change
+  //   dispatch({ type: "FILTERS_CHANGED" });
+  // }, [storedPrice, storedSize, storedBedrooms, dispatch]);
 
   return (
     <div className="filters__container">
@@ -34,8 +53,9 @@ function Filters() {
           onChange={handleChange}
         >
           <MenuItem value={0}>{`Price`}</MenuItem>
-          <MenuItem value={900}>{`> $900`}</MenuItem>
-          <MenuItem value={1100}>{`> $1100`}</MenuItem>
+          {priceRange}
+          {/* <MenuItem value={900}>{`> $900`}</MenuItem>
+          <MenuItem value={1100}>{`> $1100`}</MenuItem> */}
         </Select>
       </FormControl>
       <Select
@@ -47,8 +67,7 @@ function Filters() {
         onChange={handleChange}
       >
         <MenuItem value={0}>{`Size`}</MenuItem>
-        <MenuItem value={50}>{`> 50m2`}</MenuItem>
-        <MenuItem value={100}>{`> 100m2`}</MenuItem>
+        {sizeRange}
       </Select>
       <Select
         className="filters__item"
@@ -59,8 +78,7 @@ function Filters() {
         onChange={handleChange}
       >
         <MenuItem value={0}>{`Bedrooms`}</MenuItem>
-        <MenuItem value={1}>{`> 1`}</MenuItem>
-        <MenuItem value={2}>{`> 2`}</MenuItem>
+        {bedroomRange}
       </Select>
     </div>
   );
