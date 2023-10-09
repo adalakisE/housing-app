@@ -58,6 +58,11 @@ $listing-description-font-size: 14px !default;
     }
   }
 
+  &__link {
+    text-decoration: none;
+    color: black;
+  }
+
   &__photo {
     max-width: 200px;
     width: 100%;

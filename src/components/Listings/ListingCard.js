@@ -1,5 +1,6 @@
 import { useState, React } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import {
   addToComparison,
   removeFromComparison,
@@ -35,65 +36,67 @@ function ListingCard({
   };
 
   return (
-    <div className="listing-card__container">
-      <img
-        className="listing-card__photo"
-        variant="left"
-        src={imgSrc}
-        alt={imgSrc}
-      />
-      {/* USE THIS FOR MOBILE TEXT ON PHOTO */}
-      {/* <li className="listing-card__body-description-mobile">
+    <Link className="listing-card__link" to={`property/${item.id}`}>
+      <div className="listing-card__container">
+        <img
+          className="listing-card__photo"
+          variant="left"
+          src={imgSrc}
+          alt={`img-alt: ${item.id}`}
+        />
+        {/* USE THIS FOR MOBILE TEXT ON PHOTO */}
+        {/* <li className="listing-card__body-description-mobile">
         <div>{description}</div>
       </li> */}
-      <div className="listing-card__body">
-        <div className="listing-card__body-title">{title}</div>
-        <li className="listing-card__body-description">
-          <p className="listing-card__body-description-text">{description}</p>
-        </li>
-        <div className="listing-card__body-content">
-          <ul className="listing-card__body-list-ul">
-            <li className="listing-card__body-list-item">
-              <img
-                className="icon-area"
-                src={Placeholder}
-                alt="placeholder-icon"
-              />
-              {area}
-            </li>
-            <li className="listing-card__body-list-item">
-              <img className="icon-area" src={Area} alt="area-icon" />
-              {size / 10}m<sup>2</sup>
-            </li>
-            <li className="listing-card__body-list-item">
-              <img className="icon-area" src={Bed} alt="bed-icon" />
-              {bedroom} apartment
-            </li>
-            <div className="listing-card__footer">
-              <span className="listing-card__price">
-                ${price.toLocaleString("en")}
-              </span>
-              <div
-                className={`${
-                  stateItems.length < 3 ||
-                  stateItems.some((storedItem) => item.id === storedItem.id)
-                    ? "listing-card__comparison"
-                    : "listing-card__comparison listing-card__comparison--full"
-                }`}
-                onClick={() => handleClick(item)}
-              >
-                <span className="listing-card__comparison-text">
-                  {stateItems.some((storedItem) => item.id === storedItem.id)
-                    ? "Included in comparison"
-                    : "Compare"}
+        <div className="listing-card__body">
+          <div className="listing-card__body-title">{title}</div>
+          <li className="listing-card__body-description">
+            <p className="listing-card__body-description-text">{description}</p>
+          </li>
+          <div className="listing-card__body-content">
+            <ul className="listing-card__body-list-ul">
+              <li className="listing-card__body-list-item">
+                <img
+                  className="icon-area"
+                  src={Placeholder}
+                  alt="placeholder-icon"
+                />
+                {area}
+              </li>
+              <li className="listing-card__body-list-item">
+                <img className="icon-area" src={Area} alt="area-icon" />
+                {size / 10}m<sup>2</sup>
+              </li>
+              <li className="listing-card__body-list-item">
+                <img className="icon-area" src={Bed} alt="bed-icon" />
+                {bedroom} apartment
+              </li>
+              <div className="listing-card__footer">
+                <span className="listing-card__price">
+                  ${price.toLocaleString("en")}
                 </span>
-                <img className="icon-area" src={Compare} alt="bed-icon" />
+                <div
+                  className={`${
+                    stateItems.length < 3 ||
+                    stateItems.some((storedItem) => item.id === storedItem.id)
+                      ? "listing-card__comparison"
+                      : "listing-card__comparison listing-card__comparison--full"
+                  }`}
+                  onClick={() => handleClick(item)}
+                >
+                  <span className="listing-card__comparison-text">
+                    {stateItems.some((storedItem) => item.id === storedItem.id)
+                      ? "Included in comparison"
+                      : "Compare"}
+                  </span>
+                  <img className="icon-area" src={Compare} alt="bed-icon" />
+                </div>
               </div>
-            </div>
-          </ul>
+            </ul>
+          </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
 

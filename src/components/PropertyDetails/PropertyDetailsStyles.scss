@@ -1,0 +1,46 @@
+.property-details {
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__back-btn {
+    width: 30px;
+
+    cursor: pointer;
+  }
+
+  &__icon-arrow {
+    height: 30px;
+    transform: rotate(90deg);
+    margin-left: 20px;
+  }
+
+  &__photo-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding-bottom: 20px;
+  }
+
+  &__photo-item {
+    max-width: 300px;
+  }
+
+  &__body-container {
+    display: flex;
+    flex-direction: row;
+  }
+
+  &__left-wrap {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__right-wrap {
+    display: flex;
+    flex-direction: column;
+  }
+}
