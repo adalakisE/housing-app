@@ -1,11 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Search from "../../api/Icons/search.png";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { storeTitle } from "../../redux/actions/toDoActions";
 import { storeItems } from "../../redux/actions/toDoActions";
 import { fetching } from "../../redux/actions/toDoActions";
-import store from "../../redux/store/configureStore";
 import "./SearchBarStyles.scss";
 
 // const URL = "http://localhost:5500"; //nodejs server with 'Simple Web Server' for Windows
@@ -46,24 +45,24 @@ function SearchBar() {
     }
   };
 
-  useEffect(() => {
-    const unsubscribe = store.subscribe(() => {
-      // Check if filters have changed
-      const filtersChanged = state.appReducer.filtersChanged;
+  // useEffect(() => {
+  //   const unsubscribe = store.subscribe(() => {
+  //     // Check if filters have changed
+  //     const filtersChanged = state.appReducer.filtersChanged;
 
-      if (filtersChanged) {
-        // Reset the filtersChanged state in the Redux store
-        dispatch({ type: "RESET_FILTERS_CHANGED" });
+  //     if (filtersChanged) {
+  //       // Reset the filtersChanged state in the Redux store
+  //       dispatch({ type: "RESET_FILTERS_CHANGED" });
 
-        // Call getListings when filters change
-        getListings();
-      }
-    });
+  //       // Call getListings when filters change
+  //       getListings();
+  //     }
+  //   });
 
-    return () => {
-      unsubscribe();
-    };
-  }, [dispatch, state.appReducer.filtersChanged]);
+  //   return () => {
+  //     unsubscribe();
+  //   };
+  // }, [dispatch, state.appReducer.filtersChanged]);
 
   return (
     <div className="search-bar__container">
