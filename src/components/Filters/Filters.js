@@ -1,17 +1,20 @@
 import React from "react";
+import { useSearchParams } from "react-router-dom";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import FormControl from "@mui/material/FormControl";
-import { useDispatch, useSelector } from "react-redux";
 import "./FiltersStyles.scss";
 
 function Filters() {
-  const dispatch = useDispatch();
-  const storedPrice = useSelector((state) => state.appReducer.storedPrice);
-  const storedSize = useSelector((state) => state.appReducer.storedSize);
-  const storedBedrooms = useSelector(
-    (state) => state.appReducer.storedBedrooms
-  );
+  const [searchParams, setSearchParams] = useSearchParams({
+    price: "",
+    size: "",
+    bedrooms: "",
+  });
+
+  const price = searchParams.get("price");
+  const size = searchParams.get("size");
+  const bedrooms = searchParams.get("bedrooms");
 
   let priceRange = [700, 900, 1300, 1900, 2800, 3200];
   let sizeRange = [50, 70, 110, 150, 210, 290];
@@ -27,26 +30,20 @@ function Filters() {
     <MenuItem value={bedroom}>{`> ${bedroom}`}</MenuItem>
   ));
 
-  /* MAKE IT FIRE THE API CALL ON CHANGE */
-  /* constructing the redux action to dispatch */
   function handleChange(e) {
-    dispatch({
-      type: `STORE_${e.target.name.toUpperCase()}`,
-      payload: e.target.value,
+    console.log(e.target.name);
+    setSearchParams((prev) => {
+      prev.set(e.target.name.toLowerCase(), e.target.value);
+      return prev;
     });
   }
-
-  // useEffect(() => {
-  //   // Dispatch an action to indicate a filter change
-  //   dispatch({ type: "FILTERS_CHANGED" });
-  // }, [storedPrice, storedSize, storedBedrooms, dispatch]);
 
   return (
     <div className="filters__container">
       <FormControl>
         <Select
           className="filters__item"
-          value={storedPrice}
+          value={price ? price : 0}
           name="Price"
           displayEmpty
           inputProps={{ "aria-label": "Without label" }}
@@ -54,13 +51,11 @@ function Filters() {
         >
           <MenuItem value={0}>{`Price`}</MenuItem>
           {priceRange}
-          {/* <MenuItem value={900}>{`> $900`}</MenuItem>
-          <MenuItem value={1100}>{`> $1100`}</MenuItem> */}
         </Select>
       </FormControl>
       <Select
         className="filters__item"
-        value={storedSize}
+        value={size ? size : 0}
         name="Size"
         displayEmpty
         inputProps={{ "aria-label": "Without label" }}
@@ -71,7 +66,7 @@ function Filters() {
       </Select>
       <Select
         className="filters__item"
-        value={storedBedrooms}
+        value={bedrooms ? bedrooms : 0}
         name="Bedrooms"
         displayEmpty
         inputProps={{ "aria-label": "Without label" }}
