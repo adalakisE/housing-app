@@ -6,8 +6,8 @@ import { storeItems } from "../../redux/actions/toDoActions";
 import { fetching } from "../../redux/actions/toDoActions";
 import "./SearchBarStyles.scss";
 
-const URL = "http://localhost:5500"; //nodejs server with 'Simple Web Server' for Windows
-// const URL = "https://fox-house-backend.onrender.com"; //live serve from Render.com
+// const URL = "http://localhost:5500"; //nodejs server with 'Simple Web Server' for Windows
+const URL = "https://fox-house-backend.onrender.com"; //live serve from Render.com
 
 function SearchBar() {
   const dispatch = useDispatch();
