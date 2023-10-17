@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import Search from "../../api/Icons/search.png";
 import { Link, useLocation, useSearchParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { storeItems } from "../../redux/actions/toDoActions";
 import { fetching } from "../../redux/actions/toDoActions";
+import Search from "../../api/Icons/search.png";
 import "./SearchBarStyles.scss";
 
-// const URL = "http://localhost:5500"; //nodejs server with 'Simple Web Server' for Windows
+// const URL = "http://localhost:5500"; //nodejs server; can be accessed with Live Server vscode extension
 const URL = "https://fox-house-backend.onrender.com"; //live serve from Render.com
 
 function SearchBar() {
