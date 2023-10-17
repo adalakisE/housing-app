@@ -32,15 +32,26 @@
   &__body-container {
     display: flex;
     flex-direction: row;
+    padding: 10px 20px;
   }
 
   &__left-wrap {
     display: flex;
     flex-direction: column;
+    padding-right: 20px;
   }
 
   &__right-wrap {
     display: flex;
     flex-direction: column;
+  }
+}
+
+.property-details-form {
+  &__form-container {
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    box-shadow: 0 15px 55px -15px rgba(37, 38, 40, 0.15);
   }
 }

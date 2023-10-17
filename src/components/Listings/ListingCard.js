@@ -36,19 +36,24 @@ function ListingCard({
   };
 
   return (
-    <Link className="listing-card__link" to={`property/${item.id}`}>
-      <div className="listing-card__container">
+    <div className="listing-card__container">
+      <Link
+        to={`property/${item.id}`}
+        style={{ display: "contents", paddingRight: "20px" }}
+      >
         <img
           className="listing-card__photo"
           variant="left"
           src={imgSrc}
           alt={`img-alt: ${item.id}`}
         />
-        {/* USE THIS FOR MOBILE TEXT ON PHOTO */}
-        {/* <div className="listing-card__body-description-mobile">
+      </Link>
+      {/* USE THIS FOR MOBILE TEXT ON PHOTO */}
+      {/* <div className="listing-card__body-description-mobile">
         <div>{description}</div>
       </div> */}
-        <div className="listing-card__body">
+      <div className="listing-card__body">
+        <Link className="listing-card__link" to={`property/${item.id}`}>
           <div className="listing-card__body-title">{title}</div>
           <div className="listing-card__body-description">
             <p className="listing-card__body-description-text">{description}</p>
@@ -71,32 +76,36 @@ function ListingCard({
                 <img className="icon-area" src={Bed} alt="bed-icon" />
                 {bedroom} apartment
               </li>
-              <div className="listing-card__footer">
-                <span className="listing-card__price">
-                  ${price.toLocaleString("en")}
-                </span>
-                <div
-                  className={`${
-                    stateItems.length < 3 ||
-                    stateItems.some((storedItem) => item.id === storedItem.id)
-                      ? "listing-card__comparison"
-                      : "listing-card__comparison listing-card__comparison--full"
-                  }`}
-                  onClick={() => handleClick(item)}
-                >
-                  <span className="listing-card__comparison-text">
-                    {stateItems.some((storedItem) => item.id === storedItem.id)
-                      ? "Included in comparison"
-                      : "Compare"}
-                  </span>
-                  <img className="icon-area" src={Compare} alt="bed-icon" />
-                </div>
-              </div>
             </ul>
+          </div>
+        </Link>
+        <div className="listing-card__footer">
+          <Link className="listing-card__link" to={`property/${item.id}`}>
+            <span className="listing-card__price">
+              ${price.toLocaleString("en")}
+            </span>
+          </Link>
+          <div
+            className={`${
+              stateItems.length < 3 ||
+              stateItems.some((storedItem) => item.id === storedItem.id)
+                ? "listing-card__comparison"
+                : "listing-card__comparison listing-card__comparison--full"
+            }`}
+            onClick={() => {
+              handleClick(item);
+            }}
+          >
+            <span className="listing-card__comparison-text">
+              {stateItems.some((storedItem) => item.id === storedItem.id)
+                ? "Included in comparison"
+                : "Compare"}
+            </span>
+            <img className="icon-area" src={Compare} alt="weight-icon" />
           </div>
         </div>
       </div>
-    </Link>
+    </div>
   );
 }
 
