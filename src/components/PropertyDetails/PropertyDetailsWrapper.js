@@ -3,6 +3,7 @@ import TopBarWrapper from "../TopBar/TopBarWrapper";
 import { useSelector } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
 import PropertyDetailsForm from "./PropertyDetailsForm";
+import MapWrapper from "../Map/MapWrapper";
 import Arrow from "../../api/Icons/down-arrow.png";
 import "./PropertyDetailsStyles.scss";
 
@@ -49,28 +50,58 @@ function PropertyDetailsWrapper() {
             src={propertyItem.photoLink}
             alt={`img-link-${propertyItem.id}`}
           />
-          <img
-            className="property-details__photo-item"
-            src={propertyItem.photoLink}
-            alt={`img-link-${propertyItem.id}`}
-          />
+          <div className="property-details__photo-container-thumbnails">
+            <img
+              className="property-details__photo-thumbnail-item"
+              src={propertyItem.photoLink}
+              alt={`img-link-${propertyItem.id}`}
+            />
+            <img
+              className="property-details__photo-thumbnail-item"
+              src={propertyItem.photoLink}
+              alt={`img-link-${propertyItem.id}`}
+            />
+            <img
+              className="property-details__photo-thumbnail-item"
+              src={propertyItem.photoLink}
+              alt={`img-link-${propertyItem.id}`}
+            />
+            <img
+              className="property-details__photo-thumbnail-item"
+              src={propertyItem.photoLink}
+              alt={`img-link-${propertyItem.id}`}
+            />
+          </div>
         </div>
-        <h2>{propertyItem.title}</h2>
+        <h2 style={{ left: "0" }}>{propertyItem.title}</h2>
         <div className="property-details__body-container">
           <div className="property-details__left-wrap">
             <ul style={{ listStyleType: "none" }}>
-              <li className="property-details_body-item">
+              <li className="property-details__body-description">
                 {propertyItem.description}
               </li>
-              <li className="property-details_body-item">
-                Location: {propertyItem.area}
-              </li>
-              <li className="property-details_body-item">
-                Size: {propertyItem.sqFt}
-              </li>
-              <li className="property-details_body-item">
-                Bedrooms: {propertyItem.bedrooms}
-              </li>
+              <table className="property-details__body-table">
+                <tr>
+                  <td className="property-details__body-td">Location:</td>
+                  <td className="property-details__body-td">
+                    {propertyItem.area}
+                  </td>
+                </tr>
+
+                <tr>
+                  <td className="property-details__body-td">Size:</td>
+                  <td className="property-details__body-td">
+                    {propertyItem.sqFt}
+                  </td>
+                </tr>
+
+                <tr>
+                  <td className="property-details__body-td">Bedrooms:</td>
+                  <td className="property-details__body-td">
+                    {propertyItem.bedrooms}
+                  </td>
+                </tr>
+              </table>
             </ul>
           </div>
           <div className="property-details__right-wrap">
@@ -79,6 +110,9 @@ function PropertyDetailsWrapper() {
             </div>
           </div>
         </div>
+      </div>
+      <div className="property-details__map-container">
+        <MapWrapper />
       </div>
     </>
   );
