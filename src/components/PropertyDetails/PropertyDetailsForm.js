@@ -9,7 +9,7 @@ function PropertyDetailsForm() {
       <form className="property-details-form__form-container">
         <p>Contact Form</p>
         <TextField
-          sx={{ mb: "15px", width: "250px" }}
+          sx={{ mb: "15px" }}
           id="outlined-password-input"
           label="Name"
           type="name"

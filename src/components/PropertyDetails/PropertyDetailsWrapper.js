@@ -15,7 +15,8 @@ function PropertyDetailsWrapper() {
     state.appReducer.storedItems.find((item) => item.id === parseInt(id))
   );
 
-  const URL = "http://localhost:5500";
+  // const URL = "http://localhost:5500";
+  const URL = "https://fox-house-backend.onrender.com"; //live serve from Render.com
 
   const navigate = useNavigate();
 

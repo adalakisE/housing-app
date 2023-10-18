@@ -28,18 +28,25 @@ function MapBlock() {
     const center = { x: 0, y: 0 };
 
     stateItems?.forEach((el) => {
-      console.log(center);
+      // console.log(center);
       center.x += el.latitude;
       center.y += el.longitude;
     });
     console.log(center);
     center.x = center.x / stateItems.length;
     center.y = center.y / stateItems.length;
-    console.log(center);
+    // console.log(center);
     setCenterMarker({ x: 30, y: 29 });
 
-    console.log(`center is: ${centerMarker.x}, ${centerMarker.y}`);
+    // console.log(`center is: ${centerMarker.x}, ${centerMarker.y}`);
   };
+
+  // function SetViewOnClick({ coords }) {
+  //   const map = useMap();
+  //   map.setView(coords, map.getZoom());
+
+  //   return null;
+  // }
 
   useEffect(() => {
     calculateCenter();
@@ -48,8 +55,7 @@ function MapBlock() {
 
   return (
     <div className="map__container">
-      {centerMarker.x},{centerMarker.y}
-      <MapContainer center={[37.97, 23.73]} zoom={13} scrollWheelZoom={true}>
+      <MapContainer center={[38.0472, 23.798]} zoom={13} scrollWheelZoom={true}>
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

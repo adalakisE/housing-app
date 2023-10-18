@@ -27,9 +27,11 @@ function SearchBar() {
     const response = await fetch(`${URL}/feed/items${location.search}`)
       .then((response) => response.json())
       .then((data) => dispatch(storeItems(data.items)))
-      .then(() => dispatch(fetching(false)))
+      // .then(() => dispatch(fetching(false)))
       .catch((err) => console.log(err));
 
+    dispatch(fetching(false));
+    console.log(fetching);
     return response;
   };
 
@@ -40,8 +42,6 @@ function SearchBar() {
         return prev;
       });
 
-      // navigate(`/mainpage/search${location.search}`);
-
       getListings();
     }
   };
@@ -51,6 +51,9 @@ function SearchBar() {
   };
 
   useEffect(() => {
+    /** Every time we change a filter we append it to the URL
+     *  This is triggering the useEffect and the getListings()
+     */
     if (location.search.length) {
       getListings();
     }
