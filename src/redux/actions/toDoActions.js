@@ -7,22 +7,28 @@ export const storeItems = (items) => {
   };
 };
 
-export const storePrice = (price) => {
+// export const storePrice = (price) => {
+//   return {
+//     type: actionTypes.STORE_PRICE,
+//     payload: price,
+//   };
+// };
+// export const storeSize = (size) => {
+//   return {
+//     type: actionTypes.STORE_SIZE,
+//     payload: size,
+//   };
+// };
+// export const storeBedrooms = (bedrooms) => {
+//   return {
+//     type: actionTypes.STORE_BEDROOMS,
+//     payload: bedrooms,
+//   };
+// };
+export const storeFilters = (filterName, filterValue) => {
   return {
-    type: actionTypes.STORE_PRICE,
-    payload: price,
-  };
-};
-export const storeSize = (size) => {
-  return {
-    type: actionTypes.STORE_SIZE,
-    payload: size,
-  };
-};
-export const storeBedrooms = (bedrooms) => {
-  return {
-    type: actionTypes.STORE_BEDROOMS,
-    payload: bedrooms,
+    type: actionTypes.STORE_FILTERS,
+    payload: { filterName, filterValue },
   };
 };
 

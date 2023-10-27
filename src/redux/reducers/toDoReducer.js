@@ -2,9 +2,14 @@ import * as actionTypes from "../actions/actionTypes";
 
 const initialState = {
   storedItems: [],
-  storedPrice: 0,
-  storedSize: 0,
-  storedBedrooms: 0,
+  // storedPrice: 0,
+  // storedSize: 0,
+  // storedBedrooms: 0,
+  storedFilters: {
+    price: 0,
+    size: 0,
+    bedrooms: 0,
+  },
   itemsInComparison: [],
   fetching: false,
 };
@@ -22,22 +27,32 @@ function appReducer(state = initialState, action) {
         storedItems: action.payload,
       };
 
-    case actionTypes.STORE_PRICE:
-      return {
-        ...state,
-        storedPrice: action.payload,
-      };
+    // case actionTypes.STORE_PRICE:
+    //   return {
+    //     ...state,
+    //     storedPrice: action.payload,
+    //   };
 
-    case actionTypes.STORE_SIZE:
-      return {
-        ...state,
-        storedSize: action.payload,
-      };
+    // case actionTypes.STORE_SIZE:
+    //   return {
+    //     ...state,
+    //     storedSize: action.payload,
+    //   };
 
-    case actionTypes.STORE_BEDROOMS:
+    // case actionTypes.STORE_BEDROOMS:
+    //   return {
+    //     ...state,
+    //     storedBedrooms: action.payload,
+    //   };
+
+    case actionTypes.STORE_FILTERS:
+      const { filterName, filterValue } = action.payload;
       return {
         ...state,
-        storedBedrooms: action.payload,
+        storedFilters: {
+          ...state.storedFilters,
+          [filterName]: filterValue,
+        },
       };
 
     case actionTypes.STORE_TITLE:

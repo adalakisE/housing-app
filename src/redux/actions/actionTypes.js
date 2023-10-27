@@ -1,8 +1,9 @@
 export const STORE_ITEMS = "STORE_ITEMS";
 export const FILTERED_ITEMS = "FILTERED_ITEMS";
-export const STORE_PRICE = "STORE_PRICE";
-export const STORE_SIZE = "STORE_SIZE";
-export const STORE_BEDROOMS = "STORE_BEDROOMS";
+// export const STORE_PRICE = "STORE_PRICE";
+// export const STORE_SIZE = "STORE_SIZE";
+// export const STORE_BEDROOMS = "STORE_BEDROOMS";
+export const STORE_FILTERS = "STORE_FILTERS";
 export const STORE_TITLE = "STORE_TITLE";
 export const FILTER_ALL = "FILTER_ALL";
 export const ADD_TO_COMPARISON = "ADD_TO_COMPARISON";

@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { MapContainer, TileLayer, Marker, Tooltip } from "react-leaflet";
 import { useSelector } from "react-redux";
 
 function MapBlock() {
   const stateItems = useSelector((state) => state.appReducer.storedItems);
-  const [centerMarker, setCenterMarker] = useState({ x: 0, y: 0 });
 
   const markersList = stateItems?.map((item) => {
     return (
@@ -24,22 +23,22 @@ function MapBlock() {
     );
   });
 
-  const calculateCenter = () => {
-    const center = { x: 0, y: 0 };
+  // const calculateCenter = () => {
+  //   const center = { x: 0, y: 0 };
 
-    stateItems?.forEach((el) => {
-      // console.log(center);
-      center.x += el.latitude;
-      center.y += el.longitude;
-    });
-    console.log(center);
-    center.x = center.x / stateItems.length;
-    center.y = center.y / stateItems.length;
-    // console.log(center);
-    setCenterMarker({ x: 30, y: 29 });
+  //   stateItems?.forEach((el) => {
+  //     // console.log(center);
+  //     center.x += el.latitude;
+  //     center.y += el.longitude;
+  //   });
+  //   // console.log(center);
+  //   center.x = center.x / stateItems.length;
+  //   center.y = center.y / stateItems.length;
+  //   // console.log(center);
+  //   setCenterMarker({ x: 30, y: 29 });
 
-    // console.log(`center is: ${centerMarker.x}, ${centerMarker.y}`);
-  };
+  //   // console.log(`center is: ${centerMarker.x}, ${centerMarker.y}`);
+  // };
 
   // function SetViewOnClick({ coords }) {
   //   const map = useMap();
@@ -48,10 +47,10 @@ function MapBlock() {
   //   return null;
   // }
 
-  useEffect(() => {
-    calculateCenter();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [stateItems]);
+  // useEffect(() => {
+  //   // calculateCenter();
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [stateItems]);
 
   return (
     <div className="map__container">
