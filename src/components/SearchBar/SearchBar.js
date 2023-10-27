@@ -6,9 +6,9 @@ import { fetching } from "../../redux/actions/toDoActions";
 import Search from "../../api/Icons/search.png";
 import "./SearchBarStyles.scss";
 
-const URL = "http://localhost:5500"; //nodejs server; can be accessed with Live Server vscode extension
+// const URL = "http://localhost:5500"; //nodejs server; can be accessed with Live Server vscode extension
 // const URL = "http://localhost:8080"; //springboot server
-// const URL = "https://fox-house-backend.onrender.com"; //live serve from Render.com
+const URL = "https://fox-house-backend.onrender.com"; //live serve from Render.com
 
 function SearchBar() {
   const dispatch = useDispatch();
