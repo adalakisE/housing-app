@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from "react";
-import TopBarWrapper from "../TopBar/TopBarWrapper";
 import { useSelector } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
+import TopBarWrapper from "../TopBar/TopBarWrapper";
 import PropertyDetailsForm from "./PropertyDetailsForm";
 import MapWrapper from "../Map/MapWrapper";
 import Arrow from "../../api/Icons/down-arrow.png";
 import "./PropertyDetailsStyles.scss";
 
 function PropertyDetailsWrapper() {
-  const [propertyItem, setPropertyItem] = useState("");
-
+  const [propertyItem, setPropertyItem] = useState({});
   let { id } = useParams();
   let item = useSelector((state) =>
     state.appReducer.storedItems.find((item) => item.id === parseInt(id))
@@ -21,12 +20,13 @@ function PropertyDetailsWrapper() {
   const navigate = useNavigate();
 
   const getItem = async () => {
-    item = await fetch(`${URL}/feed/item?id=${id}`)
-      .then((response) => response.json())
-      .then((item) => setPropertyItem(item))
-      .catch((err) => console.log(err));
-
-    console.log(propertyItem);
+    try {
+      const response = await fetch(`${URL}/feed/item?id=${id}`);
+      const item = await response.json();
+      setPropertyItem(item);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   useEffect(() => {
@@ -88,14 +88,12 @@ function PropertyDetailsWrapper() {
                     {propertyItem.area}
                   </td>
                 </tr>
-
                 <tr>
                   <td className="property-details__body-td">Size:</td>
                   <td className="property-details__body-td">
                     {propertyItem.sqFt}
                   </td>
                 </tr>
-
                 <tr>
                   <td className="property-details__body-td">Bedrooms:</td>
                   <td className="property-details__body-td">
@@ -113,7 +111,11 @@ function PropertyDetailsWrapper() {
         </div>
       </div>
       <div className="property-details__map-container">
-        <MapWrapper />
+        {Object.keys(propertyItem).length ? (
+          <MapWrapper stateItems={[propertyItem]} />
+        ) : (
+          <></>
+        )}
       </div>
     </>
   );

@@ -1,60 +1,49 @@
 import React from "react";
 import { MapContainer, TileLayer, Marker, Tooltip } from "react-leaflet";
-import { useSelector } from "react-redux";
 
-function MapBlock() {
-  const stateItems = useSelector((state) => state.appReducer.storedItems);
+function MapBlock({ stateItems }) {
+  let totalLatitude = 0;
+  let totalLongitude = 0;
+
+  stateItems?.forEach((item) => {
+    totalLatitude += item.latitude;
+    totalLongitude += item.longitude;
+  });
+
+  const centerLatitude = totalLatitude / stateItems.length;
+  const centerLongitude = totalLongitude / stateItems.length;
 
   const markersList = stateItems?.map((item) => {
     return (
       <Marker position={[item.latitude, item.longitude]} key={item.id}>
         <Tooltip direction="top">
-          <img
-            className="map__marker-photo"
-            src={item.photoLink}
-            alt="markerphoto"
-          />
-          <div>
-            <span>${item.price} </span>
-            <span> {item.sqFt / 10}m2</span>
+          <div className="map__marker-container">
+            <img
+              className="map__marker-photo"
+              src={item.photoLink}
+              alt="markerphoto"
+            />
+            <div className="map__marker-content-container">
+              <div className="map__marker-content-items">
+                <span> {item.area}</span>
+                <span> {item.sqFt / 10}m2</span>
+                <span> {item.bedrooms} bedroom</span>
+                <h6>${item.price} </h6>
+              </div>
+            </div>
           </div>
         </Tooltip>
       </Marker>
     );
   });
 
-  // const calculateCenter = () => {
-  //   const center = { x: 0, y: 0 };
-
-  //   stateItems?.forEach((el) => {
-  //     // console.log(center);
-  //     center.x += el.latitude;
-  //     center.y += el.longitude;
-  //   });
-  //   // console.log(center);
-  //   center.x = center.x / stateItems.length;
-  //   center.y = center.y / stateItems.length;
-  //   // console.log(center);
-  //   setCenterMarker({ x: 30, y: 29 });
-
-  //   // console.log(`center is: ${centerMarker.x}, ${centerMarker.y}`);
-  // };
-
-  // function SetViewOnClick({ coords }) {
-  //   const map = useMap();
-  //   map.setView(coords, map.getZoom());
-
-  //   return null;
-  // }
-
-  // useEffect(() => {
-  //   // calculateCenter();
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [stateItems]);
-
   return (
     <div className="map__container">
-      <MapContainer center={[38.0472, 23.798]} zoom={13} scrollWheelZoom={true}>
+      <MapContainer
+        center={[centerLatitude, centerLongitude]}
+        zoom={13}
+        scrollWheelZoom={true}
+      >
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

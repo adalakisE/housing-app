@@ -23,11 +23,23 @@
   }
 
   &__marker-container {
-    //
+    // border-radius: 20px;
   }
 
   &__marker-photo {
     width: 100px;
     height: 80px;
+    border-radius: 20px 20px 0 0;
+  }
+
+  &__marker-content-container {
+    display: flex;
+    flex-direction: row;
+  }
+
+  &__marker-content-items {
+    display: flex;
+    flex-direction: column;
+    padding: 5px 10px;
   }
 }

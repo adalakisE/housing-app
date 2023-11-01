@@ -2,10 +2,10 @@ import React from "react";
 import MapBlock from "./MapBlock";
 import "./MapStyles.scss";
 
-function MapWrapper() {
+function MapWrapper({ stateItems }) {
   return (
     <div className="map-wrapper">
-      <MapBlock />
+      <MapBlock stateItems={stateItems} />
     </div>
   );
 }

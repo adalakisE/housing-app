@@ -27,6 +27,7 @@ function SearchBar() {
 
   const getListings = async () => {
     dispatch(fetching(true));
+    navigate(`/mainpage/search${location.search}`);
 
     const response = await fetch(`${URL}/feed/items${location.search}`)
       .then((response) => response.json())
@@ -34,7 +35,6 @@ function SearchBar() {
       .catch((err) => console.log(err));
 
     dispatch(fetching(false));
-    navigate(`/mainpage/search${location.search}`);
     return response;
   };
 

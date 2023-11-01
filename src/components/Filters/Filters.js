@@ -50,6 +50,7 @@ function Filters() {
     <div className="filters__container">
       <FormControl>
         <Select
+          sx={{ mb: "10px" }}
           className="filters__item"
           value={storedFilters.price ? storedFilters.price : price ? price : 0}
           name="Price"
