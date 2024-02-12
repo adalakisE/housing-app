@@ -6,9 +6,9 @@ import { fetching } from "../../redux/actions/toDoActions";
 import Search from "../../api/Icons/search.png";
 import "./SearchBarStyles.scss";
 
-// const URL = "http://localhost:5500"; //nodejs server; can be accessed with Live Server vscode extension
+const URL = "http://localhost:5500"; //nodejs server; can be accessed with Live Server vscode extension
 // const URL = "http://localhost:8080"; //springboot server
-const URL = "https://fox-house-backend.onrender.com"; //live serve from Render.com
+// const URL = "https://fox-house-backend.onrender.com"; //live serve from Render.com
 
 function SearchBar() {
   const dispatch = useDispatch();
@@ -52,11 +52,11 @@ function SearchBar() {
     setSearchParams((prev) => {
       prev.set("title", stateTitle);
 
-      if (location.pathname === "/") {
-        prev.set("price", storedFilters.price);
-        prev.set("size", storedFilters.size);
-        prev.set("bedrooms", storedFilters.bedrooms);
-      }
+      // if (location.pathname === "/") {
+      //   prev.set("price", storedFilters.price);
+      //   prev.set("size", storedFilters.size);
+      //   prev.set("bedrooms", storedFilters.bedrooms);
+      // }
       return prev;
     });
   };

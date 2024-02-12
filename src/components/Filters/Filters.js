@@ -1,97 +1,153 @@
-import React from "react";
-import { useSearchParams, useLocation } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
+import Button from "@mui/material/Button";
+import Input from "@mui/material/Input";
 import FormControl from "@mui/material/FormControl";
-import { storeFilters } from "../../redux/actions/toDoActions";
-import { useDispatch, useSelector } from "react-redux";
-
+import { useLocation, useNavigate } from "react-router-dom";
 import "./FiltersStyles.scss";
 
-function Filters() {
-  const dispatch = useDispatch();
-  const location = useLocation();
+// Reusable Dropdown component
+const Dropdown = ({
+  label,
+  values,
+  minSelectedValue,
+  maxSelectedValue,
+  onChange,
+}) => {
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
-  const storedFilters = useSelector((state) => state.appReducer.storedFilters);
-
-  const [searchParams, setSearchParams] = useSearchParams({
-    price: "",
-    size: "",
-    bedrooms: "",
-  });
-
-  const price = searchParams.get("price");
-  const size = searchParams.get("size");
-  const bedrooms = searchParams.get("bedrooms");
-
-  const priceRange = [700, 900, 1300, 1900, 2800, 3200].map((price, index) => (
-    <MenuItem key={index} value={price}>{`> $ ${price}`}</MenuItem>
-  ));
-
-  const sizeRange = [50, 70, 110, 150, 210, 290].map((size, index) => (
-    <MenuItem key={index} value={size}>{`> ${size} sqm2`}</MenuItem>
-  ));
-
-  const bedroomRange = [1, 2, 3, 4].map((bedroom, index) => (
-    <MenuItem key={index} value={bedroom}>{`> ${bedroom}`}</MenuItem>
-  ));
-
-  function handleChange(e) {
-    if (location.pathname !== "/") {
-      setSearchParams((prev) => {
-        prev.set(e.target.name.toLowerCase(), e.target.value);
-        return prev;
-      });
-    }
-    dispatch(storeFilters(e.target.name.toLowerCase(), e.target.value));
-  }
+  const toggleDropdown = () => {
+    setIsDropdownOpen((prev) => !prev);
+  };
 
   return (
     <div className="filters__container">
-      <FormControl>
-        <Select
-          sx={{ mb: "10px" }}
-          className="filters__item"
-          value={storedFilters.price ? storedFilters.price : price ? price : 0}
-          name="Price"
-          displayEmpty
-          inputProps={{ "aria-label": "Without label" }}
-          onChange={handleChange}
-        >
-          <MenuItem value={0}>{`Price`}</MenuItem>
-          {priceRange}
-        </Select>
-      </FormControl>
-      <Select
-        className="filters__item"
-        value={storedFilters.size ? storedFilters.size : size ? size : 0}
-        name="Size"
-        displayEmpty
-        inputProps={{ "aria-label": "Without label" }}
-        onChange={handleChange}
+      <Button
+        variant="outlined"
+        sx={{
+          mb: 2,
+          color: "#f29e7e",
+          border: "1px solid #f29e7e",
+          "&:hover": {
+            backgroundColor: "#f29e7e",
+            color: "#fff",
+            border: "1px solid #f29e7e",
+          },
+        }}
+        onClick={toggleDropdown}
       >
-        <MenuItem value={0}>{`Size`}</MenuItem>
-        {sizeRange}
-      </Select>
-      <Select
-        className="filters__item"
-        value={
-          storedFilters.bedrooms
-            ? storedFilters.bedrooms
-            : bedrooms
-            ? bedrooms
-            : 0
-        }
-        name="Bedrooms"
-        displayEmpty
-        inputProps={{ "aria-label": "Without label" }}
-        onChange={handleChange}
-      >
-        <MenuItem value={0}>{`Bedrooms`}</MenuItem>
-        {bedroomRange}
-      </Select>
+        {`${label}: ${minSelectedValue} - ${maxSelectedValue}`}
+      </Button>
+      {isDropdownOpen && (
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <FormControl>
+            <Select
+              value={minSelectedValue}
+              onChange={(e) => onChange(e.target.value)}
+              input={<Input />}
+            >
+              <MenuItem value="From">From</MenuItem>
+              {values.map((value) => (
+                <MenuItem key={value} value={value}>
+                  {`${value}`}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+          <FormControl sx={{ ml: 2 }}>
+            <Select
+              value={maxSelectedValue}
+              onChange={(e) => onChange(e.target.value)}
+              input={<Input />}
+            >
+              <MenuItem value="To">To</MenuItem>
+              {values.map((value) => (
+                <MenuItem key={value} value={value}>
+                  {`${value}`}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+        </div>
+      )}
+    </div>
+  );
+};
+
+function PriceRangeSelector() {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const [priceValues] = useState(
+    Array.from({ length: 20 }, (_, index) => 700 + index * 100)
+  );
+  const [sizeValues] = useState(
+    Array.from({ length: 10 }, (_, index) => 50 + index * 20)
+  );
+  const [bedroomsValues] = useState(
+    Array.from({ length: 5 }, (_, index) => 0 + index + 1)
+  );
+
+  const [minPrice, setMinPrice] = useState("From");
+  const [maxPrice, setMaxPrice] = useState("To");
+  const [minSize, setMinSize] = useState("From");
+  const [maxSize, setMaxSize] = useState("To");
+  const [minBedrooms, setMinBedrooms] = useState("From");
+  const [maxBedrooms, setMaxBedrooms] = useState("To");
+
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    params.set("minPrice", minPrice === "From" ? "" : minPrice);
+    params.set("maxPrice", maxPrice === "To" ? "" : maxPrice);
+    params.set("minSize", minSize === "From" ? "" : minSize);
+    params.set("maxSize", maxSize === "To" ? "" : maxSize);
+    params.set("minBedrooms", minBedrooms === "From" ? "" : minBedrooms);
+    params.set("maxBedrooms", maxBedrooms === "To" ? "" : maxBedrooms);
+    navigate({ search: params.toString() });
+  }, [
+    minPrice,
+    maxPrice,
+    minSize,
+    maxSize,
+    minBedrooms,
+    maxBedrooms,
+    location.search,
+    navigate,
+  ]);
+
+  return (
+    <div style={{ display: "flex" }}>
+      <Dropdown
+        label="Price"
+        values={priceValues}
+        minSelectedValue={minPrice}
+        maxSelectedValue={maxPrice}
+        // onChange={(min, max) => {
+        //   setMinPrice(min);
+        //   setMaxPrice(max);
+        // }}
+      />
+      <Dropdown
+        label="Size"
+        values={sizeValues}
+        selectedValue={`${minSize} - ${maxSize}`}
+        onChange={(value) => {
+          setMinSize(value);
+          setMaxSize(value);
+        }}
+      />
+      <Dropdown
+        label="Bedrooms"
+        values={bedroomsValues}
+        selectedValue={`${minBedrooms} - ${maxBedrooms}`}
+        onChange={(value) => {
+          setMinBedrooms(value);
+          setMaxBedrooms(value);
+        }}
+      />
     </div>
   );
 }
 
-export default Filters;
+export default PriceRangeSelector;

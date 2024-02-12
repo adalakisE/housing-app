@@ -70,7 +70,7 @@ function ListingCard({
               </li>
               <li className="listing-card__body-list-item">
                 <img className="icon-area" src={Area} alt="area-icon" />
-                {size / 10}m<sup>2</sup>
+                {Math.round(size / 10.764)}m<sup>2</sup>
               </li>
               <li className="listing-card__body-list-item">
                 <img className="icon-area" src={Bed} alt="bed-icon" />
