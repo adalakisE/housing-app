@@ -4,7 +4,7 @@ $orange-color: #f29e7e;
   &__container {
     display: flex;
     flex-direction: column;
-    max-width: 200px;
+    width: 200px;
     margin-right: 16px;
 
     div,
@@ -29,4 +29,57 @@ $orange-color: #f29e7e;
     height: 40px;
     margin-right: 10px;
   }
+
+  &__dropdown-container {
+    // max-height: 125px;
+    padding: 20px;
+    border-radius: 4px;
+    top: 145px;
+    box-shadow: 5px 5px 15px 1px rgba(37, 38, 40, 0.1);
+  }
+
+  &__dropdown-input {
+    width: 130px;
+    height: 34px;
+    border: 1px solid #c4c2c2;
+    border-radius: 4px;
+  }
+
+  &__dropdown-list {
+    overflow-y: auto;
+    height: 150px;
+    margin-top: 5px;
+    padding-left: 0;
+  }
+
+  &__dropdown-list-item {
+    padding-top: 5px;
+    list-style-type: none;
+
+    padding: 5px 0 5px 5px;
+    margin-right: 10px;
+    cursor: pointer;
+
+    :hover {
+      background-color: $orange-color;
+      color: white;
+    }
+  }
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  padding-top: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #dedede;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }

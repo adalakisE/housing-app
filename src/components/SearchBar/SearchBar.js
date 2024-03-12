@@ -52,11 +52,11 @@ function SearchBar() {
     setSearchParams((prev) => {
       prev.set("title", stateTitle);
 
-      // if (location.pathname === "/") {
-      //   prev.set("price", storedFilters.price);
-      //   prev.set("size", storedFilters.size);
-      //   prev.set("bedrooms", storedFilters.bedrooms);
-      // }
+      if (location.pathname === "/") {
+        // prev.set("price", storedFilters.price);
+        // prev.set("size", storedFilters.size);
+        // prev.set("bedrooms", storedFilters.bedrooms);
+      }
       return prev;
     });
   };

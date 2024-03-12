@@ -1,92 +1,29 @@
 import React, { useState, useEffect } from "react";
-import MenuItem from "@mui/material/MenuItem";
-import Select from "@mui/material/Select";
-import Button from "@mui/material/Button";
-import Input from "@mui/material/Input";
-import FormControl from "@mui/material/FormControl";
 import { useLocation, useNavigate } from "react-router-dom";
+import Dropdown from "./Dropdown";
 import "./FiltersStyles.scss";
-
-// Reusable Dropdown component
-const Dropdown = ({
-  label,
-  values,
-  minSelectedValue,
-  maxSelectedValue,
-  onChange,
-}) => {
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-
-  const toggleDropdown = () => {
-    setIsDropdownOpen((prev) => !prev);
-  };
-
-  return (
-    <div className="filters__container">
-      <Button
-        variant="outlined"
-        sx={{
-          mb: 2,
-          color: "#f29e7e",
-          border: "1px solid #f29e7e",
-          "&:hover": {
-            backgroundColor: "#f29e7e",
-            color: "#fff",
-            border: "1px solid #f29e7e",
-          },
-        }}
-        onClick={toggleDropdown}
-      >
-        {`${label}: ${minSelectedValue} - ${maxSelectedValue}`}
-      </Button>
-      {isDropdownOpen && (
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
-          <FormControl>
-            <Select
-              value={minSelectedValue}
-              onChange={(e) => onChange(e.target.value)}
-              input={<Input />}
-            >
-              <MenuItem value="From">From</MenuItem>
-              {values.map((value) => (
-                <MenuItem key={value} value={value}>
-                  {`${value}`}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-          <FormControl sx={{ ml: 2 }}>
-            <Select
-              value={maxSelectedValue}
-              onChange={(e) => onChange(e.target.value)}
-              input={<Input />}
-            >
-              <MenuItem value="To">To</MenuItem>
-              {values.map((value) => (
-                <MenuItem key={value} value={value}>
-                  {`${value}`}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-        </div>
-      )}
-    </div>
-  );
-};
 
 function PriceRangeSelector() {
   const location = useLocation();
   const navigate = useNavigate();
 
   const [priceValues] = useState(
-    Array.from({ length: 20 }, (_, index) => 700 + index * 100)
+    Array.from({ length: 20 }, (_, index) => ({
+      id: index + 1,
+      value: 700 + index * 100,
+    }))
   );
   const [sizeValues] = useState(
-    Array.from({ length: 10 }, (_, index) => 50 + index * 20)
+    Array.from({ length: 10 }, (_, index) => ({
+      id: index + 1,
+      value: 50 + index * 20,
+    }))
   );
   const [bedroomsValues] = useState(
-    Array.from({ length: 5 }, (_, index) => 0 + index + 1)
+    Array.from({ length: 5 }, (_, index) => ({
+      id: index + 1,
+      value: 0 + index + 1,
+    }))
   );
 
   const [minPrice, setMinPrice] = useState("From");
@@ -123,28 +60,24 @@ function PriceRangeSelector() {
         values={priceValues}
         minSelectedValue={minPrice}
         maxSelectedValue={maxPrice}
-        // onChange={(min, max) => {
-        //   setMinPrice(min);
-        //   setMaxPrice(max);
-        // }}
+        setMinSelectedValue={setMinPrice}
+        setMaxSelectedValue={setMaxPrice}
       />
       <Dropdown
         label="Size"
         values={sizeValues}
-        selectedValue={`${minSize} - ${maxSize}`}
-        onChange={(value) => {
-          setMinSize(value);
-          setMaxSize(value);
-        }}
+        minSelectedValue={minSize}
+        maxSelectedValue={maxSize}
+        setMinSelectedValue={setMinSize}
+        setMaxSelectedValue={setMaxSize}
       />
       <Dropdown
         label="Bedrooms"
         values={bedroomsValues}
-        selectedValue={`${minBedrooms} - ${maxBedrooms}`}
-        onChange={(value) => {
-          setMinBedrooms(value);
-          setMaxBedrooms(value);
-        }}
+        minSelectedValue={minBedrooms}
+        maxSelectedValue={maxBedrooms}
+        setMinSelectedValue={setMinBedrooms}
+        setMaxSelectedValue={setMaxBedrooms}
       />
     </div>
   );
