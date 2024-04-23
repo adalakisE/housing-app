@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Button from "@mui/material/Button";
 
 import "./FiltersStyles.scss";
@@ -14,12 +14,22 @@ const Dropdown = ({
 }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
-  const [minPrice, setMinPrice] = useState(0);
-  const [maxPrice, setMaxPrice] = useState(0);
+  // const [minPrice, setMinPrice] = useState(0);
+  // const [maxPrice, setMaxPrice] = useState(0);
+
+  const dropdownRef = useRef(null);
 
   const toggleDropdown = () => {
     setIsDropdownOpen((prev) => !prev);
   };
+
+  const closeOpenMenus = (e) => {
+    if (isDropdownOpen && !dropdownRef.current?.contains(e.target)) {
+      setIsDropdownOpen(false);
+    }
+  };
+
+  document.addEventListener("mousedown", closeOpenMenus);
 
   const dropdownList = (valuesList, value) => {
     return (
@@ -42,7 +52,7 @@ const Dropdown = ({
   };
 
   return (
-    <div className="filters__container">
+    <div ref={dropdownRef} className="filters__container">
       <Button
         variant="outlined"
         sx={{

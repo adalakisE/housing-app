@@ -27,7 +27,7 @@ function SearchBar() {
 
   const getListings = async () => {
     dispatch(fetching(true));
-    navigate(`/mainpage/search${location.search}`);
+    // navigate(`/mainpage/search${location.search}`);
 
     const response = await fetch(`${URL}/feed/items${location.search}`)
       .then((response) => response.json())
@@ -53,9 +53,8 @@ function SearchBar() {
       prev.set("title", stateTitle);
 
       if (location.pathname === "/") {
-        // prev.set("price", storedFilters.price);
-        // prev.set("size", storedFilters.size);
-        // prev.set("bedrooms", storedFilters.bedrooms);
+        console.log(`/mainpage/search${location.search}`);
+        navigate(`/mainpage/search${location.search}`);
       }
       return prev;
     });

@@ -41,6 +41,7 @@ $orange-color: #f29e7e;
   &__dropdown-input {
     width: 130px;
     height: 34px;
+    padding-left: 10px;
     border: 1px solid #c4c2c2;
     border-radius: 4px;
   }
@@ -55,14 +56,15 @@ $orange-color: #f29e7e;
   &__dropdown-list-item {
     padding-top: 5px;
     list-style-type: none;
-
-    padding: 5px 0 5px 5px;
+    border-radius: 4px;
+    padding: 5px 0 5px 10px;
     margin-right: 10px;
-    cursor: pointer;
+    transition: background-color 0.3s ease;
 
-    :hover {
-      background-color: $orange-color;
-      color: white;
+    &:hover {
+      background-color: rgba(242, 159, 126, 0.223);
+      cursor: pointer;
+      // color: white;
     }
   }
 }
