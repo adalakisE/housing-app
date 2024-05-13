@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { storeItems } from "../../redux/actions/toDoActions";
 import { fetching } from "../../redux/actions/toDoActions";
 import Search from "../../api/Icons/search.png";
-import Filters from "../Filters/Filters";
 import "./SearchBarStyles.scss";
 
 const URL = "http://localhost:5500"; //nodejs server; can be accessed with Live Server vscode extension
