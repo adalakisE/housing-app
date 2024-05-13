@@ -7,6 +7,7 @@ import PropertyDetailsForm from "./PropertyDetailsForm";
 import MapWrapper from "../Map/MapWrapper";
 import Arrow from "../../api/Icons/down-arrow.png";
 import "./PropertyDetailsStyles.scss";
+import TopBarWrapper from "../TopBar/TopBarWrapper";
 
 function PropertyDetailsWrapper() {
   const [propertyItem, setPropertyItem] = useState({});
@@ -41,8 +42,8 @@ function PropertyDetailsWrapper() {
 
   return (
     <>
-      <SearchBar />
-      <UserProfile />
+      <TopBarWrapper autoSearch={false} isVisible={false} />
+
       <div className="property-details__back-btn" onClick={() => navigate(-1)}>
         <img className="property-details__icon-arrow" src={Arrow} alt="arrow" />
       </div>

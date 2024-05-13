@@ -31,9 +31,7 @@ function TopBarWrapper({ autoSearch, isVisible }) {
         <SearchBar />
         <UserProfile />
       </div>
-      <Filters autoSearch={autoSearch} isVisible={isVisible} />
-      {autoSearch}
-      {isVisible}
+      {isVisible && <Filters autoSearch={autoSearch} />}
     </div>
   );
 }

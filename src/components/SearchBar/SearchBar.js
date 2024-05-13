@@ -58,7 +58,6 @@ function SearchBar() {
 
       return prev;
     });
-    getListings();
   };
 
   useEffect(() => {

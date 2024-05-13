@@ -1,6 +1,5 @@
 import React, { useState, useRef } from "react";
 import Button from "@mui/material/Button";
-
 import "./FiltersStyles.scss";
 
 // Reusable Dropdown component
