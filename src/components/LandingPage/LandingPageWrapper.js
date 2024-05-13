@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import SearchBar from "../SearchBar/SearchBar";
 import Filters from "../Filters/Filters";
 import "./LandingPageStyles.scss";

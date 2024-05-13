@@ -31,6 +31,10 @@ export const storeItems = (items) => {
 //     payload: { filterName, filterValue },
 //   };
 // };
+export const setFilters = (filters) => ({
+  type: actionTypes.SET_FILTERS,
+  payload: filters,
+});
 
 export const storedFilters = (filters) => {
   return {

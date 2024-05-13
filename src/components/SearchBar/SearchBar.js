@@ -16,7 +16,7 @@ function SearchBar() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const storedFilters = useSelector((state) => state.appReducer.storedFilters);
+  const filters = useSelector((state) => state.appReducer.filters);
 
   const [searchParams, setSearchParams] = useSearchParams({
     title: "",
@@ -28,9 +28,7 @@ function SearchBar() {
 
   const getListings = async () => {
     dispatch(fetching(true));
-    // navigate(`/mainpage/search${location.search}`);
-    console.log(location.pathname);
-    console.log(location.search);
+    navigate(`/mainpage/search${location.search}`);
 
     const response = await fetch(`${URL}/feed/items/${location.search}`)
       .then((response) => response.json())
@@ -55,12 +53,13 @@ function SearchBar() {
     setSearchParams((prev) => {
       prev.set("title", stateTitle);
 
-      if (location.pathname === "/") {
-        // navigate(`/mainpage/search?${title}${storedFilters}`);
-        // navigate(`/mainpage/search?${prev.toString()}`);
+      for (const [key, value] of Object.entries(filters)) {
+        prev.set(key, value);
       }
+
       return prev;
     });
+    getListings();
   };
 
   useEffect(() => {
@@ -68,8 +67,11 @@ function SearchBar() {
       /** make it run only ONCE when on the start page */
       getListings();
     }
+    // if(autoSearch){
+    //   getListings();
+    // }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [location.search, location.search.length]);
+  }, [location.search]);
 
   return (
     <div className="search-bar__container">

@@ -10,6 +10,14 @@ const initialState = {
     size: 0,
     bedrooms: 0,
   },
+  filters: {
+    minPrice: "",
+    maxPrice: "",
+    minSize: "",
+    maxSize: "",
+    minBedrooms: "",
+    maxBedrooms: "",
+  },
   itemsInComparison: [],
   fetching: false,
 };
@@ -25,6 +33,12 @@ function appReducer(state = initialState, action) {
       return {
         ...state,
         storedItems: action.payload,
+      };
+
+    case actionTypes.SET_FILTERS:
+      return {
+        ...state,
+        filters: action.payload,
       };
 
     // case actionTypes.STORE_PRICE:

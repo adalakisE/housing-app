@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { storedFilters } from "../../redux/actions/toDoActions";
+import { setFilters } from "../../redux/actions/toDoActions";
 import { useDispatch, useSelector } from "react-redux";
 import Dropdown from "./Dropdown";
 import "./FiltersStyles.scss";
@@ -9,7 +9,7 @@ function PriceRangeSelector({ autoSearch, isVisible }) {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const fetching = useSelector((state) => state.appReducer.fetching);
+  const filters = useSelector((state) => state.appReducer.filters);
 
   const dispatch = useDispatch();
 
@@ -32,12 +32,24 @@ function PriceRangeSelector({ autoSearch, isVisible }) {
     }))
   );
 
-  const [minPrice, setMinPrice] = useState("From");
-  const [maxPrice, setMaxPrice] = useState("To");
-  const [minSize, setMinSize] = useState("From");
-  const [maxSize, setMaxSize] = useState("To");
-  const [minBedrooms, setMinBedrooms] = useState("From");
-  const [maxBedrooms, setMaxBedrooms] = useState("To");
+  const [minPrice, setMinPrice] = useState(
+    filters.minPrice !== "" ? filters.minPrice : "From"
+  );
+  const [maxPrice, setMaxPrice] = useState(
+    filters.maxPrice !== "" ? filters.maxPrice : "To"
+  );
+  const [minSize, setMinSize] = useState(
+    filters.minSize !== "" ? filters.minSize : "From"
+  );
+  const [maxSize, setMaxSize] = useState(
+    filters.maxSize !== "" ? filters.maxSize : "To"
+  );
+  const [minBedrooms, setMinBedrooms] = useState(
+    filters.minBedrooms !== "" ? filters.minBedrooms : "From"
+  );
+  const [maxBedrooms, setMaxBedrooms] = useState(
+    filters.maxBedrooms !== "" ? filters.maxBedrooms : "To"
+  );
 
   useEffect(() => {
     const params = new URLSearchParams(location.search);
@@ -48,11 +60,16 @@ function PriceRangeSelector({ autoSearch, isVisible }) {
     params.set("minBedrooms", minBedrooms === "From" ? "" : minBedrooms);
     params.set("maxBedrooms", maxBedrooms === "To" ? "" : maxBedrooms);
 
-    console.log(params);
-    // const dispatchedParams = params;
-    // console.log(params.toString());
-    // dispatch(storedFilters(dispatchedParams));
-    // const searchParamsString = params.toString();
+    const filters = {
+      minPrice: minPrice === "From" ? "" : minPrice,
+      maxPrice: maxPrice === "To" ? "" : maxPrice,
+      minSize: minSize === "From" ? "" : minSize,
+      maxSize: maxSize === "To" ? "" : maxSize,
+      minBedrooms: minBedrooms === "From" ? "" : minBedrooms,
+      maxBedrooms: maxBedrooms === "To" ? "" : maxBedrooms,
+    };
+
+    dispatch(setFilters(filters));
 
     if (autoSearch) {
       navigate({ search: params.toString() });
