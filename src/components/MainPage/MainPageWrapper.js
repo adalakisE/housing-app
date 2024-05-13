@@ -12,8 +12,9 @@ function MainPageWrapper() {
 
   return (
     <div className="main-page">
+      {/* fix this class */}
       <div className="main-page--hidden">
-        <TopBar />
+        <TopBar autoSearch={true} isVisible={true} />
         <div className="main-page__middle-page-wrapper">
           <ListingsWrapper />
           {stateItems.length ? <MapWrapper stateItems={stateItems} /> : <></>}

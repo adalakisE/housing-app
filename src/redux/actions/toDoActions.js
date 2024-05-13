@@ -25,10 +25,17 @@ export const storeItems = (items) => {
 //     payload: bedrooms,
 //   };
 // };
-export const storeFilters = (filterName, filterValue) => {
+// export const storeFilters = (filterName, filterValue) => {
+//   return {
+//     type: actionTypes.STORE_FILTERS,
+//     payload: { filterName, filterValue },
+//   };
+// };
+
+export const storedFilters = (filters) => {
   return {
     type: actionTypes.STORE_FILTERS,
-    payload: { filterName, filterValue },
+    payload: filters,
   };
 };
 

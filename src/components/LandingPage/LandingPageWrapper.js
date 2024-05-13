@@ -8,7 +8,7 @@ function LandingPageWrapper() {
     <div className="landing-page">
       <div className="landing-page__container">
         <SearchBar />
-        <Filters />
+        <Filters autoSearch={false} isVisible={true} />
       </div>
     </div>
   );

@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
-import TopBarWrapper from "../TopBar/TopBarWrapper";
+import SearchBar from "../SearchBar/SearchBar";
+import UserProfile from "../UserProfile/UserProfile";
 import PropertyDetailsForm from "./PropertyDetailsForm";
 import MapWrapper from "../Map/MapWrapper";
 import Arrow from "../../api/Icons/down-arrow.png";
@@ -40,7 +41,8 @@ function PropertyDetailsWrapper() {
 
   return (
     <>
-      <TopBarWrapper />
+      <SearchBar />
+      <UserProfile />
       <div className="property-details__back-btn" onClick={() => navigate(-1)}>
         <img className="property-details__icon-arrow" src={Arrow} alt="arrow" />
       </div>

@@ -45,14 +45,20 @@ function appReducer(state = initialState, action) {
     //     storedBedrooms: action.payload,
     //   };
 
+    // case actionTypes.STORE_FILTERS:
+    //   const { filterName, filterValue } = action.payload;
+    //   return {
+    //     ...state,
+    //     storedFilters: {
+    //       ...state.storedFilters,
+    //       [filterName]: filterValue,
+    //     },
+    //   };
+
     case actionTypes.STORE_FILTERS:
-      const { filterName, filterValue } = action.payload;
       return {
         ...state,
-        storedFilters: {
-          ...state.storedFilters,
-          [filterName]: filterValue,
-        },
+        storedFilters: action.payload,
       };
 
     case actionTypes.STORE_TITLE:

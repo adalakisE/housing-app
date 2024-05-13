@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { storeItems } from "../../redux/actions/toDoActions";
 import { fetching } from "../../redux/actions/toDoActions";
 import Search from "../../api/Icons/search.png";
+import Filters from "../Filters/Filters";
 import "./SearchBarStyles.scss";
 
 const URL = "http://localhost:5500"; //nodejs server; can be accessed with Live Server vscode extension
@@ -28,8 +29,10 @@ function SearchBar() {
   const getListings = async () => {
     dispatch(fetching(true));
     // navigate(`/mainpage/search${location.search}`);
+    console.log(location.pathname);
+    console.log(location.search);
 
-    const response = await fetch(`${URL}/feed/items${location.search}`)
+    const response = await fetch(`${URL}/feed/items/${location.search}`)
       .then((response) => response.json())
       .then((data) => dispatch(storeItems(data)))
       .catch((err) => console.log(err));
@@ -53,8 +56,8 @@ function SearchBar() {
       prev.set("title", stateTitle);
 
       if (location.pathname === "/") {
-        console.log(`/mainpage/search${location.search}`);
-        navigate(`/mainpage/search${location.search}`);
+        // navigate(`/mainpage/search?${title}${storedFilters}`);
+        // navigate(`/mainpage/search?${prev.toString()}`);
       }
       return prev;
     });
@@ -66,7 +69,7 @@ function SearchBar() {
       getListings();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [location.search]);
+  }, [location.search, location.search.length]);
 
   return (
     <div className="search-bar__container">

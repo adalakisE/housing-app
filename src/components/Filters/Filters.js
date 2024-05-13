@@ -1,11 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { storedFilters } from "../../redux/actions/toDoActions";
+import { useDispatch, useSelector } from "react-redux";
 import Dropdown from "./Dropdown";
 import "./FiltersStyles.scss";
 
-function PriceRangeSelector() {
+function PriceRangeSelector({ autoSearch, isVisible }) {
   const location = useLocation();
   const navigate = useNavigate();
+
+  const fetching = useSelector((state) => state.appReducer.fetching);
+
+  const dispatch = useDispatch();
 
   const [priceValues] = useState(
     Array.from({ length: 20 }, (_, index) => ({
@@ -41,7 +47,17 @@ function PriceRangeSelector() {
     params.set("maxSize", maxSize === "To" ? "" : maxSize);
     params.set("minBedrooms", minBedrooms === "From" ? "" : minBedrooms);
     params.set("maxBedrooms", maxBedrooms === "To" ? "" : maxBedrooms);
-    navigate({ search: params.toString() });
+
+    console.log(params);
+    // const dispatchedParams = params;
+    // console.log(params.toString());
+    // dispatch(storedFilters(dispatchedParams));
+    // const searchParamsString = params.toString();
+
+    if (autoSearch) {
+      navigate({ search: params.toString() });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     minPrice,
     maxPrice,
