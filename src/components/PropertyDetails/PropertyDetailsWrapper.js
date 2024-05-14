@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
-import SearchBar from "../SearchBar/SearchBar";
-import UserProfile from "../UserProfile/UserProfile";
 import PropertyDetailsForm from "./PropertyDetailsForm";
 import MapWrapper from "../Map/MapWrapper";
 import Arrow from "../../api/Icons/down-arrow.png";
