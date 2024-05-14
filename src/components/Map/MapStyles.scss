@@ -27,9 +27,9 @@
   }
 
   &__marker-photo {
-    width: 100px;
+    // width: 100px;
     height: 80px;
-    border-radius: 20px 20px 0 0;
+    // border-radius: 20px 20px 0 0;
   }
 
   &__marker-content-container {
@@ -40,6 +40,6 @@
   &__marker-content-items {
     display: flex;
     flex-direction: column;
-    padding: 5px 10px;
+    // padding: 5px 10px;
   }
 }

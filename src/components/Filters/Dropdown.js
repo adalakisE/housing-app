@@ -1,10 +1,11 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Button from "@mui/material/Button";
 import "./FiltersStyles.scss";
 
 // Reusable Dropdown component
 const Dropdown = ({
   label,
+  symbol,
   values,
   minSelectedValue,
   maxSelectedValue,
@@ -12,9 +13,9 @@ const Dropdown = ({
   setMaxSelectedValue,
 }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-
-  // const [minPrice, setMinPrice] = useState(0);
-  // const [maxPrice, setMaxPrice] = useState(0);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [useLabel, setUseLabel] = useState(label);
+  const [useSymbol, setUseSymbol] = useState(symbol);
 
   const dropdownRef = useRef(null);
 
@@ -50,6 +51,22 @@ const Dropdown = ({
     );
   };
 
+  useEffect(() => {
+    const handleResize = () => {
+      const width = window.innerWidth;
+      setWindowWidth(width);
+      setUseLabel(width > 768 ? label : "");
+      setUseSymbol(width > 768 ? "" : symbol);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    // Cleanup function to remove event listener when component unmounts
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
     <div ref={dropdownRef} className="filters__container">
       <Button
@@ -65,21 +82,21 @@ const Dropdown = ({
         }}
         onClick={toggleDropdown}
       >
-        {`${label}: ${minSelectedValue} - ${maxSelectedValue}`}
+        {`  ${
+          minSelectedValue !== "From" && maxSelectedValue === "To"
+            ? `From ${minSelectedValue} ${symbol}`
+            : minSelectedValue === "From" && maxSelectedValue !== "To"
+            ? `Up to ${maxSelectedValue} ${symbol}`
+            : minSelectedValue !== "From" && maxSelectedValue !== "To"
+            ? `${minSelectedValue}-${maxSelectedValue} ${symbol}`
+            : useLabel + " From - To"
+        }`}
       </Button>
       {isDropdownOpen && (
-        <div
-          className="filters__dropdown-container"
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            position: "absolute",
-            backgroundColor: "white",
-          }}
-        >
+        <div className="filters__dropdown-container">
           <div style={{ marginRight: "10px" }}>
             <input
-              value={minSelectedValue}
+              value={`${minSelectedValue}  ${symbol}`}
               onChange={() => {}}
               className="filters__dropdown-input"
             />
@@ -88,7 +105,7 @@ const Dropdown = ({
           -
           <div style={{ marginLeft: "10px" }}>
             <input
-              value={maxSelectedValue}
+              value={`${maxSelectedValue}  ${symbol}`}
               onChange={() => {}}
               className="filters__dropdown-input"
             />

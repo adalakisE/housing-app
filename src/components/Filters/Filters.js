@@ -87,9 +87,10 @@ function PriceRangeSelector({ autoSearch, isVisible }) {
   ]);
 
   return (
-    <div style={{ display: "flex" }}>
+    <div className="filters">
       <Dropdown
         label="Price"
+        symbol="€"
         values={priceValues}
         minSelectedValue={minPrice}
         maxSelectedValue={maxPrice}
@@ -98,6 +99,7 @@ function PriceRangeSelector({ autoSearch, isVisible }) {
       />
       <Dropdown
         label="Size"
+        symbol="m²"
         values={sizeValues}
         minSelectedValue={minSize}
         maxSelectedValue={maxSize}
@@ -106,6 +108,7 @@ function PriceRangeSelector({ autoSearch, isVisible }) {
       />
       <Dropdown
         label="Bedrooms"
+        symbol=""
         values={bedroomsValues}
         minSelectedValue={minBedrooms}
         maxSelectedValue={maxBedrooms}

@@ -3,6 +3,12 @@
     display: flex;
     width: 100%;
     max-width: 660px;
+
+    @media (max-width: 480px) {
+      input {
+        font-size: 12px;
+      }
+    }
   }
 
   &__input {
@@ -10,6 +16,7 @@
     border: thin solid rgba(37, 38, 40, 0.27);
     box-shadow: 0 2px 1px rgba(37, 38, 40, 0.05);
     border-radius: 4px;
+    margin-right: 10px;
     padding: 20px;
     width: 100%;
     outline: none;
@@ -17,7 +24,7 @@
 
   &__search-btn-container {
     padding: 9px 12px;
-    margin-left: 10px;
+    margin-right: 10px;
     border-radius: 4px;
     background-color: #f29e7e;
     transition: all 0.2s;
@@ -26,6 +33,10 @@
 
     &:hover {
       background-color: #f68c62;
+    }
+
+    @media (max-width: 480px) {
+      display: none;
     }
   }
 

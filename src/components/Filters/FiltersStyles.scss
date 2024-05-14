@@ -1,15 +1,28 @@
 $orange-color: #f29e7e;
 
 .filters {
+  display: flex;
+
   &__container {
     display: flex;
     flex-direction: column;
     width: 200px;
     margin-right: 16px;
+    // align-items: flex-end;
 
     div,
     li {
       font-size: 14px;
+
+      @media (max-width: 768px) {
+        font-size: 12px;
+      }
+    }
+
+    button {
+      @media (max-width: 768px) {
+        font-size: 12px;
+      }
     }
   }
 
@@ -32,10 +45,22 @@ $orange-color: #f29e7e;
 
   &__dropdown-container {
     // max-height: 125px;
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    background-color: white;
     padding: 20px;
     border-radius: 4px;
-    top: 145px;
+    top: 140px;
     box-shadow: 5px 5px 15px 1px rgba(37, 38, 40, 0.1);
+
+    @media (max-width: 768px) {
+    }
+
+    @media (max-width: 480px) {
+      width: 90%;
+      left: 10px;
+    }
   }
 
   &__dropdown-input {
@@ -44,6 +69,10 @@ $orange-color: #f29e7e;
     padding-left: 10px;
     border: 1px solid #c4c2c2;
     border-radius: 4px;
+
+    @media (max-width: 768px) {
+      // width: 100px;
+    }
   }
 
   &__dropdown-list {
