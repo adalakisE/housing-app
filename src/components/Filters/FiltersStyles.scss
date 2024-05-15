@@ -3,6 +3,10 @@ $orange-color: #f29e7e;
 .filters {
   display: flex;
 
+  @media (max-width: 480px) {
+    flex-direction: column;
+  }
+
   &__container {
     display: flex;
     flex-direction: column;
@@ -24,6 +28,11 @@ $orange-color: #f29e7e;
         font-size: 12px;
       }
     }
+
+    @media (max-width: 768px) {
+      width: 100%;
+      margin-bottom: 10px;
+    }
   }
 
   &__open-button {
@@ -43,23 +52,55 @@ $orange-color: #f29e7e;
     margin-right: 10px;
   }
 
+  &__dropdown {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    z-index: 3;
+  }
+
+  &__btn {
+    z-index: 2;
+  }
+
   &__dropdown-container {
     // max-height: 125px;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     position: absolute;
     background-color: white;
     padding: 20px;
     border-radius: 4px;
-    top: 140px;
+    top: 125px;
     box-shadow: 5px 5px 15px 1px rgba(37, 38, 40, 0.1);
 
     @media (max-width: 768px) {
+      z-index: 1;
     }
 
     @media (max-width: 480px) {
-      width: 90%;
-      left: 10px;
+      position: fixed;
+      width: 100%;
+      height: 100vh;
+      top: 100%;
+      left: 0;
+      padding-top: 100px;
+      bottom: -100%;
+      opacity: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 10px;
+      animation: smooth-appear 0.3s ease forwards;
+      z-index: 1;
+    }
+
+    @keyframes smooth-appear {
+      to {
+        // bottom: 0;
+        top: 0;
+        opacity: 1;
+      }
     }
   }
 

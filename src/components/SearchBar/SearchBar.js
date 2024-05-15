@@ -80,17 +80,35 @@ function SearchBar() {
         onKeyDown={handleKeyPress}
         onChange={handleChange}
       />
-      <button
-        id="search-btn"
-        onClick={setParams}
-        className="search-bar__search-btn-container"
-      >
-        <img
-          className="search-bar__search-btn-icon"
-          src={Search}
-          alt="search"
-        />
-      </button>
+
+      {location.pathname === "/" ? (
+        <button
+          id="search-btn"
+          onClick={setParams}
+          className="search-bar__search-btn-container"
+        >
+          <p className="search-bar__search-btn-text--mobile">
+            Search Properties
+          </p>
+          <img
+            className="search-bar__search-btn-icon"
+            src={Search}
+            alt="search"
+          />
+        </button>
+      ) : (
+        <button
+          id="search-btn"
+          onClick={setParams}
+          className="search-bar__search-btn-container--main-page"
+        >
+          <img
+            className="search-bar__search-btn-icon"
+            src={Search}
+            alt="search"
+          />
+        </button>
+      )}
     </div>
   );
 }

@@ -5,6 +5,7 @@
     max-width: 660px;
 
     @media (max-width: 480px) {
+      flex-direction: column;
       input {
         font-size: 12px;
       }
@@ -22,7 +23,8 @@
     outline: none;
   }
 
-  &__search-btn-container {
+  &__search-btn-container,
+  &__search-btn-container--main-page {
     padding: 9px 12px;
     margin-right: 10px;
     border-radius: 4px;
@@ -36,7 +38,29 @@
     }
 
     @media (max-width: 480px) {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      margin: 10px 0 0 0;
+      color: white;
+    }
+
+    &--main-page {
+      @media (max-width: 480px) {
+        display: none;
+      }
+    }
+  }
+
+  &__search-btn-text {
+    &--mobile {
       display: none;
+
+      @media (max-width: 480px) {
+        display: block;
+        margin-bottom: 0;
+      }
     }
   }
 

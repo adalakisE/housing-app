@@ -171,10 +171,10 @@ $listing-description-font-size: 14px !default;
     font-size: 12px;
     border-radius: 4px;
     margin-bottom: 10px;
-    background-color: rgba(128, 128, 128, 0.1);
+    background-color: #f29e7e;
 
     &:hover {
-      background-color: rgba(128, 128, 128, 0.132);
+      background-color: #f68c62;
       border-radius: 3px;
       transition: all 0.2s ease-in;
       cursor: pointer;
@@ -198,6 +198,7 @@ $listing-description-font-size: 14px !default;
   &__comparison-text {
     padding: 5px 10px;
     margin-bottom: 0;
+    color: white;
   }
 }
 

@@ -101,7 +101,6 @@ function ListingCard({
                 ? "Included in comparison"
                 : "Compare"}
             </span>
-            <img className="icon-area" src={Compare} alt="weight-icon" />
           </div>
         </div>
       </div>

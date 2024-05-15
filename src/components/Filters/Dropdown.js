@@ -15,7 +15,6 @@ const Dropdown = ({
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [useLabel, setUseLabel] = useState(label);
-  const [useSymbol, setUseSymbol] = useState(symbol);
 
   const dropdownRef = useRef(null);
 
@@ -55,8 +54,8 @@ const Dropdown = ({
     const handleResize = () => {
       const width = window.innerWidth;
       setWindowWidth(width);
-      setUseLabel(width > 768 ? label : "");
-      setUseSymbol(width > 768 ? "" : symbol);
+      setUseLabel(width > 768 ? label : symbol);
+      // setUseSymbol(width > 768 ? "" : symbol);
     };
 
     window.addEventListener("resize", handleResize);
@@ -94,23 +93,45 @@ const Dropdown = ({
       </Button>
       {isDropdownOpen && (
         <div className="filters__dropdown-container">
-          <div style={{ marginRight: "10px" }}>
-            <input
-              value={`${minSelectedValue}  ${symbol}`}
-              onChange={() => {}}
-              className="filters__dropdown-input"
-            />
-            {dropdownList(values, setMinSelectedValue)}
+          <div className="filters__dropdown">
+            <div style={{ marginRight: "10px" }}>
+              <input
+                value={`${minSelectedValue}  ${symbol}`}
+                onChange={() => {}}
+                className="filters__dropdown-input"
+              />
+              {dropdownList(values, setMinSelectedValue)}
+            </div>
+            -
+            <div style={{ marginLeft: "10px" }}>
+              <input
+                value={`${maxSelectedValue}  ${symbol}`}
+                onChange={() => {}}
+                className="filters__dropdown-input"
+              />
+              {dropdownList(values, setMaxSelectedValue)}
+            </div>
           </div>
-          -
-          <div style={{ marginLeft: "10px" }}>
-            <input
-              value={`${maxSelectedValue}  ${symbol}`}
-              onChange={() => {}}
-              className="filters__dropdown-input"
-            />
-            {dropdownList(values, setMaxSelectedValue)}
-          </div>
+          <Button
+            variant="outlined"
+            sx={{
+              color: "#f29e7e",
+              border: "1px solid #f29e7e",
+              display: "none", // Initially hide the button
+              "@media (max-width: 480px)": {
+                display: "block", // Show the button on screens less than 480px wide
+              },
+              zIndex: 2,
+              "&:hover": {
+                backgroundColor: "#f29e7e",
+                color: "#fff",
+                border: "1px solid #f29e7e",
+              },
+            }}
+            onClick={toggleDropdown}
+          >
+            Confirm
+          </Button>
         </div>
       )}
     </div>

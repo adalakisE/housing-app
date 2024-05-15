@@ -1,7 +1,13 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { MapContainer, TileLayer, Marker, Tooltip } from "react-leaflet";
+import L from "leaflet";
 
 function MapBlock({ stateItems }) {
+  const comparisonArray = useSelector(
+    (state) => state.appReducer.itemsInComparison
+  ); // Get comparison matrix from Redux state
+
   let totalLatitude = 0;
   let totalLongitude = 0;
 
@@ -14,6 +20,17 @@ function MapBlock({ stateItems }) {
   const centerLongitude = totalLongitude / stateItems.length;
 
   const markersList = stateItems?.map((item) => {
+    const isInComparison = comparisonArray.includes(item.id); // Check if item is in comparison matrix
+    const markerColor = isInComparison ? "green" : "blue"; // Define marker color based on comparison matrix
+
+    const customIcon = new L.Icon({
+      iconUrl: `../../api/Icons/user.png`,
+      iconSize: [25, 41],
+      iconAnchor: [12, 41],
+      popupAnchor: [1, -34],
+      shadowSize: [41, 41],
+    });
+
     return (
       <Marker position={[item.latitude, item.longitude]} key={item.id}>
         <Tooltip direction="top">

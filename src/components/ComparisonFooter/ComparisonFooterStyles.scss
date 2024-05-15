@@ -23,6 +23,7 @@
   &__list-container {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     list-style-type: none;
     padding: 0;
   }
@@ -37,10 +38,13 @@
     flex-direction: row;
     flex: 1 1 200px;
     justify-content: space-between;
-    background-color: rgba(128, 128, 128, 0.132);
+    background-color: white;
     max-height: 55px;
     max-width: 400px;
     margin-right: 10px;
+    border: 1px solid #f29e7e;
+    border-left: 0;
+    border-radius: 4px;
     transition: all 0.2s ease-in-out;
 
     p {
