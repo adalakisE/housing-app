@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useSearchParams, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { storeItems } from "../../redux/actions/toDoActions";
-import { fetching } from "../../redux/actions/toDoActions";
-import Search from "../../assets/Icons/search.png";
+import { storeItems } from "src/redux/actions/toDoActions";
+import { fetching } from "src/redux/actions/toDoActions";
+import Search from "src/assets/Icons/search.png";
 import "./SearchBarStyles.scss";
 
 // const URL = "http://localhost:5500"; //nodejs server; can be accessed with Live Server vscode extension

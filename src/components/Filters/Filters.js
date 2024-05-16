@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { setFilters } from "../../redux/actions/toDoActions";
+import { setFilters } from "src/redux/actions/toDoActions";
 import { useDispatch, useSelector } from "react-redux";
 import Dropdown from "./Dropdown";
 import "./FiltersStyles.scss";

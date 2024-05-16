@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
-import PropertyDetailsForm from "./PropertyDetailsForm";
-import MapWrapper from "../Map/MapWrapper";
-import Arrow from "../../assets/Icons/down-arrow.png";
+import PropertyDetailsForm from "src/components/PropertyDetails/PropertyDetailsForm";
+import MapWrapper from "src/components/Map/MapWrapper";
+import Arrow from "src/assets/Icons/down-arrow.png";
 import "./PropertyDetailsStyles.scss";
-import TopBarWrapper from "../TopBar/TopBarWrapper";
+import TopBarWrapper from "src/components/TopBar/TopBarWrapper";
 
-function PropertyDetailsWrapper() {
+function PropertyDetailsView() {
   const [propertyItem, setPropertyItem] = useState({});
   let { id } = useParams();
   let item = useSelector((state) =>
@@ -122,4 +122,4 @@ function PropertyDetailsWrapper() {
   );
 }
 
-export default PropertyDetailsWrapper;
+export default PropertyDetailsView;

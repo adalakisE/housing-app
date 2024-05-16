@@ -28,13 +28,13 @@
     padding: 9px 12px;
     margin-right: 10px;
     border-radius: 4px;
-    background-color: #fe900a;
+    background-color: var(--orange-color);
     transition: all 0.2s;
     border: transparent;
     outline: none;
 
     &:hover {
-      background-color: #f68c62;
+      background-color: var(--orange-color-hover);
     }
 
     @media (max-width: 480px) {

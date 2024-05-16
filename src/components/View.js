@@ -1,19 +1,19 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import MainPageWrapper from "./MainPage/MainPageWrapper";
-import LandingPageWrapper from "./LandingPage/LandingPageWrapper";
-import PropertyDetails from "./PropertyDetails/PropertyDetailsWrapper";
+import MainPageView from "src/views/MainPage/MainPage";
+import LandingPageView from "src/views/MainPage/MainPage";
+import PropertyDetailsView from "src/views/PropertyPage/PropertyPage";
 import "./ViewStyles.scss";
 
 function View() {
   return (
     <div className="view">
       <Routes>
-        <Route exact path="/" element={<LandingPageWrapper />}></Route>
-        <Route path="/mainpage/:id" element={<MainPageWrapper />}></Route>
+        <Route exact path="/" element={<LandingPageView />}></Route>
+        <Route path="/mainpage/:id" element={<MainPageView />}></Route>
         <Route
           path="/mainpage/search/property/:id"
-          element={<PropertyDetails />}
+          element={<PropertyDetailsView />}
         ></Route>
       </Routes>
     </div>

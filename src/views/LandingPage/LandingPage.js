@@ -1,14 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import logo from "../../assets/images/logo.png";
-import SearchBar from "../SearchBar/SearchBar";
-import Filters from "../Filters/Filters";
-import UserProfile from "../UserProfile/UserProfile";
+import logo from "src/assets/images/logo.png";
+import SearchBar from "src/components/SearchBar/SearchBar";
+import Filters from "src/components/Filters/Filters.js";
+import UserProfile from "src/components/UserProfile/UserProfile";
 import { useDispatch } from "react-redux";
-import { resetState } from "../../redux/actions/toDoActions";
+import { resetState } from "src/redux/actions/toDoActions";
 import "./LandingPageStyles.scss";
 
-function LandingPageWrapper() {
+function LandingPageView() {
   const dispatch = useDispatch();
 
   function handleReset() {
@@ -39,4 +39,4 @@ function LandingPageWrapper() {
   );
 }
 
-export default LandingPageWrapper;
+export default LandingPageView;

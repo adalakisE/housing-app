@@ -1,13 +1,13 @@
 import React from "react";
-import TopBar from "../TopBar/TopBarWrapper";
-import ListingsWrapper from "../Listings/ListingsWrapper";
-import MapWrapper from "../Map/MapWrapper";
-import ComparisonFooter from "../ComparisonFooter/ComparisonFooter";
-import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
+import TopBar from "src/components/TopBar/TopBarWrapper";
+import ListingsWrapper from "src/components/Listings/ListingsWrapper";
+import MapWrapper from "src/components/Map/MapWrapper";
+import ComparisonFooter from "src/components/ComparisonFooter/ComparisonFooter";
+import LoadingSpinner from "src/components/LoadingSpinner/LoadingSpinner";
 import { useSelector } from "react-redux";
 import "./MainPageStyles.scss";
 
-function MainPageWrapper() {
+function MainPageView() {
   const stateItems = useSelector((state) => state.appReducer.storedItems);
 
   return (
@@ -26,4 +26,4 @@ function MainPageWrapper() {
   );
 }
 
-export default MainPageWrapper;
+export default MainPageView;

@@ -1,11 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import logo from "../../assets/images/logo.png";
-import Filters from "../Filters/Filters";
-import SearchBar from "../SearchBar/SearchBar";
-import UserProfile from "../UserProfile/UserProfile";
+import logo from "src/assets/images/logo.png";
+import Filters from "src/components/Filters/Filters";
+import SearchBar from "src/components/SearchBar/SearchBar";
+import UserProfile from "src/components/UserProfile/UserProfile";
 import { useDispatch } from "react-redux";
-import { resetState } from "../../redux/actions/toDoActions";
+import { resetState } from "src/redux/actions/toDoActions";
 import "./TopBarStyles.scss";
 
 function TopBarWrapper({ autoSearch, isVisible }) {

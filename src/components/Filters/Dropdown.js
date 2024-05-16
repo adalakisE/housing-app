@@ -55,7 +55,6 @@ const Dropdown = ({
       const width = window.innerWidth;
       setWindowWidth(width);
       setUseLabel(width > 768 ? label : symbol);
-      // setUseSymbol(width > 768 ? "" : symbol);
     };
 
     window.addEventListener("resize", handleResize);
@@ -115,17 +114,17 @@ const Dropdown = ({
           <Button
             variant="outlined"
             sx={{
-              color: "#fe900a",
-              border: "1px solid #fe900a",
+              color: "var(--orange-color)",
+              border: "1px solid var(--orange-color)",
               display: "none", // Initially hide the button
               "@media (max-width: 480px)": {
                 display: "block", // Show the button on screens less than 480px wide
               },
               zIndex: 2,
               "&:hover": {
-                backgroundColor: "#fe900a",
+                backgroundColor: "var(--orange-color)",
                 color: "#fff",
-                border: "1px solid #fe900a",
+                border: "1px solid var(--orange-color)",
               },
             }}
             onClick={toggleDropdown}
