@@ -4,8 +4,8 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import store from "./redux/store/configureStore";
 import { Provider } from "react-redux";
-import "./assets/css/MasterStyles.scss";
-import "./assets/css/MapMasterStyles.scss";
+import "src/assets/css/MasterStyles.scss";
+import "src/assets/css/MapMasterStyles.scss";
 import "./index.scss";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
