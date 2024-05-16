@@ -8,14 +8,14 @@ function UserProfile() {
       <Button
         variant="outlined"
         sx={{
-          backgroundColor: "--orange-color",
+          backgroundColor: "var(--orange-color)",
           color: "#fff",
-          border: "1px solid #fe900a",
+          border: "1px solid var(--orange-color)",
           padding: "8px 24px 8px 24px",
           "&:hover": {
-            backgroundColor: "#ea8203",
+            backgroundColor: "var(--orange-color-hover)",
             color: "#fff",
-            border: "1px solid #fe900a",
+            border: "1px solid var(--orange-color)",
           },
         }}
       >
