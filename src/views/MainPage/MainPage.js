@@ -14,7 +14,7 @@ function MainPageView() {
     <div className="main-page">
       {/* fix this class */}
       <div className="main-page--hidden">
-        <TopBar autoSearch={true} isVisible={true} />
+        <TopBar autoSearch={true} isFiltersVisible={true} />
         <div className="main-page__middle-page-wrapper">
           <ListingsWrapper />
           {stateItems.length ? <MapWrapper stateItems={stateItems} /> : <></>}

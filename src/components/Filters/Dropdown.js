@@ -59,7 +59,6 @@ const Dropdown = ({
 
     window.addEventListener("resize", handleResize);
 
-    // Cleanup function to remove event listener when component unmounts
     return () => {
       window.removeEventListener("resize", handleResize);
     };
@@ -116,9 +115,9 @@ const Dropdown = ({
             sx={{
               color: "var(--orange-color)",
               border: "1px solid var(--orange-color)",
-              display: "none", // Initially hide the button
+              display: "none",
               "@media (max-width: 480px)": {
-                display: "block", // Show the button on screens less than 480px wide
+                display: "block",
               },
               zIndex: 2,
               "&:hover": {

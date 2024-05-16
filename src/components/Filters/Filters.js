@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Dropdown from "./Dropdown";
 import "./FiltersStyles.scss";
 
-function PriceRangeSelector({ autoSearch, isVisible }) {
+function PriceRangeSelector({ autoSearch, isFiltersVisible }) {
   const location = useLocation();
   const navigate = useNavigate();
 

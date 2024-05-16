@@ -8,7 +8,7 @@ import { useDispatch } from "react-redux";
 import { resetState } from "src/redux/actions/toDoActions";
 import "./TopBarStyles.scss";
 
-function TopBarWrapper({ autoSearch, isVisible }) {
+function TopBarWrapper({ autoSearch, isFiltersVisible }) {
   const dispatch = useDispatch();
 
   function handleReset() {
@@ -31,7 +31,7 @@ function TopBarWrapper({ autoSearch, isVisible }) {
         <SearchBar />
         <UserProfile />
       </div>
-      {isVisible && <Filters autoSearch={autoSearch} />}
+      {isFiltersVisible && <Filters autoSearch={autoSearch} />}
     </div>
   );
 }

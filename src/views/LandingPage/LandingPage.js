@@ -33,7 +33,7 @@ function LandingPageView() {
       <p className="landing-page__body-text">Find your dream home with us</p>
       <div className="landing-page__body">
         <SearchBar />
-        <Filters autoSearch={false} isVisible={true} />
+        <Filters autoSearch={false} isFiltersVisible={true} />
       </div>
     </div>
   );

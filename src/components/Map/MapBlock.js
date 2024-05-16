@@ -6,7 +6,7 @@ import L from "leaflet";
 function MapBlock({ stateItems }) {
   const comparisonArray = useSelector(
     (state) => state.appReducer.itemsInComparison
-  ); // Get comparison matrix from Redux state
+  );
 
   let totalLatitude = 0;
   let totalLongitude = 0;
@@ -20,8 +20,8 @@ function MapBlock({ stateItems }) {
   const centerLongitude = totalLongitude / stateItems.length;
 
   const markersList = stateItems?.map((item) => {
-    const isInComparison = comparisonArray.includes(item.id); // Check if item is in comparison matrix
-    const markerColor = isInComparison ? "green" : "blue"; // Define marker color based on comparison matrix
+    const isInComparison = comparisonArray.includes(item.id);
+    const markerColor = isInComparison ? "green" : "blue";
 
     const customIcon = new L.Icon({
       iconUrl: `../../assets/Icons/user.png`,
