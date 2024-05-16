@@ -1,5 +1,5 @@
 import { BrowserRouter } from "react-router-dom";
-import View from "./components/View";
+import Router from "src/router/Router";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
@@ -7,7 +7,7 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <header className="App-header">
-          <View />
+          <Router />
         </header>
       </div>
     </BrowserRouter>
