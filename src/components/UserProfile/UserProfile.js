@@ -9,13 +9,13 @@ function UserProfile() {
       <Button
         variant="outlined"
         sx={{
-          color: "#f29e7e",
-          border: "1px solid #f29e7e",
+          color: "#fe900a",
+          border: "1px solid #fe900a",
           padding: "8px 24px 8px 24px",
           "&:hover": {
-            backgroundColor: "#f29e7e",
+            backgroundColor: "#fe900a",
             color: "#fff",
-            border: "1px solid #f29e7e",
+            border: "1px solid #fe900a",
           },
         }}
       >

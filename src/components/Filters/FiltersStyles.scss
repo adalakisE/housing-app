@@ -1,4 +1,4 @@
-$orange-color: #f29e7e;
+$orange-color: #fe900a;
 
 .filters {
   display: flex;
@@ -129,12 +129,15 @@ $orange-color: #f29e7e;
     border-radius: 4px;
     padding: 5px 0 5px 10px;
     margin-right: 10px;
-    transition: background-color 0.3s ease;
+
+    // transition: background-color 0.1s ease;
 
     &:hover {
-      background-color: rgba(242, 159, 126, 0.223);
+      font-weight: 600;
+      // background-color: rgba(242, 159, 126, 0.223);
+      background-color: #fe900a;
       cursor: pointer;
-      // color: white;
+      color: white;
     }
   }
 }

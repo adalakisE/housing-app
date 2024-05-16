@@ -171,10 +171,10 @@ $listing-description-font-size: 14px !default;
     font-size: 12px;
     border-radius: 4px;
     margin-bottom: 10px;
-    background-color: #f29e7e;
+    background-color: #fe900a;
 
     &:hover {
-      background-color: #f68c62;
+      opacity: 0.8;
       border-radius: 3px;
       transition: all 0.2s ease-in;
       cursor: pointer;

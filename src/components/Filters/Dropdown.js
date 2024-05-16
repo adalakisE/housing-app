@@ -71,12 +71,12 @@ const Dropdown = ({
       <Button
         variant="outlined"
         sx={{
-          color: "#f29e7e",
-          border: "1px solid #f29e7e",
+          color: "#fe900a",
+          border: "1px solid #fe900a",
           "&:hover": {
-            backgroundColor: "#f29e7e",
+            backgroundColor: "#fe900a",
             color: "#fff",
-            border: "1px solid #f29e7e",
+            border: "1px solid #fe900a",
           },
         }}
         onClick={toggleDropdown}
@@ -115,17 +115,17 @@ const Dropdown = ({
           <Button
             variant="outlined"
             sx={{
-              color: "#f29e7e",
-              border: "1px solid #f29e7e",
+              color: "#fe900a",
+              border: "1px solid #fe900a",
               display: "none", // Initially hide the button
               "@media (max-width: 480px)": {
                 display: "block", // Show the button on screens less than 480px wide
               },
               zIndex: 2,
               "&:hover": {
-                backgroundColor: "#f29e7e",
+                backgroundColor: "#fe900a",
                 color: "#fff",
-                border: "1px solid #f29e7e",
+                border: "1px solid #fe900a",
               },
             }}
             onClick={toggleDropdown}
