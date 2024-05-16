@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import logo from "../../api/images/logo.png";
+import logo from "../../assets/images/logo.png";
 import Filters from "../Filters/Filters";
 import SearchBar from "../SearchBar/SearchBar";
 import UserProfile from "../UserProfile/UserProfile";

@@ -5,10 +5,10 @@ import {
   addToComparison,
   removeFromComparison,
 } from "../../redux/actions/toDoActions";
-import Bed from "../../api/Icons/bed.png";
-import Placeholder from "../../api/Icons/placeholder.png";
-import Area from "../../api/Icons/area.png";
-import Compare from "../../api/Icons/compare.png";
+import Bed from "../../assets/Icons/bed.png";
+import Placeholder from "../../assets/Icons/placeholder.png";
+import Area from "../../assets/Icons/area.png";
+import Compare from "../../assets/Icons/compare.png";
 import "./ListingsStyles.scss";
 
 function ListingCard({

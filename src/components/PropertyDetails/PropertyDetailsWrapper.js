@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
 import PropertyDetailsForm from "./PropertyDetailsForm";
 import MapWrapper from "../Map/MapWrapper";
-import Arrow from "../../api/Icons/down-arrow.png";
+import Arrow from "../../assets/Icons/down-arrow.png";
 import "./PropertyDetailsStyles.scss";
 import TopBarWrapper from "../TopBar/TopBarWrapper";
 

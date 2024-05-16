@@ -24,7 +24,7 @@ function MapBlock({ stateItems }) {
     const markerColor = isInComparison ? "green" : "blue"; // Define marker color based on comparison matrix
 
     const customIcon = new L.Icon({
-      iconUrl: `../../api/Icons/user.png`,
+      iconUrl: `../../assets/Icons/user.png`,
       iconSize: [25, 41],
       iconAnchor: [12, 41],
       popupAnchor: [1, -34],

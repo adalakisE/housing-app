@@ -1,5 +1,4 @@
 import React from "react";
-// import User from "../../api/Icons/user.png";
 import Button from "@mui/material/Button";
 import "./UserProfileStyles.scss";
 
