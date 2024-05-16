@@ -1,6 +1,6 @@
 /* master.scss */
 :root {
-  /* Define global colors */
+  /* Global colors */
   --primary-color: #007bff;
   --secondary-color: #6c757d;
   --success-color: #28a745;
@@ -8,19 +8,15 @@
   --warning-color: #ffc107;
   --info-color: #17a2b8;
 
-  /* Define custom colors */
+  /* Custom colors */
   --orange-color: #fe900a;
   --orange-color-hover: #ea8203;
 
-  /* Define global font family */
+  /* Global font family */
   --font-family: "Roboto", sans-serif;
 }
 
-/* Define other global styles */
 body {
   font-family: var(--font-family);
-  background-color: #f8f9fa;
   color: #333;
 }
-
-/* Add more global styles as needed */
