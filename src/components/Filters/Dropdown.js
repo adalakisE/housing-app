@@ -73,8 +73,15 @@ const Dropdown = ({
       <Button
         variant="outlined"
         sx={{
-          color: "#fe900a",
           border: "1px solid #fe900a",
+          backgroundColor:
+            minSelectedValue !== "From" || maxSelectedValue !== "To"
+              ? "#fe900a"
+              : "#fff",
+          color:
+            minSelectedValue !== "From" || maxSelectedValue !== "To"
+              ? "#fff"
+              : "#fe900a",
           "&:hover": {
             backgroundColor: "#fe900a",
             color: "#fff",

@@ -1,15 +1,14 @@
 .filters {
   display: flex;
-
-  @media (max-width: 480px) {
-    flex-direction: column;
-  }
+  overflow-x: auto;
 
   &__container {
     display: flex;
     flex-direction: column;
     width: 200px;
     margin-right: 16px;
+    white-space: nowrap;
+
     // align-items: flex-end;
 
     div,
@@ -136,12 +135,10 @@
     border-radius: 4px;
     padding: 5px 0 5px 10px;
     margin-right: 10px;
-
     // transition: background-color 0.1s ease;
 
     &:hover {
       font-weight: 600;
-      // background-color: rgba(242, 159, 126, 0.223);
       background-color: var(--orange-color);
       cursor: pointer;
       color: white;
@@ -169,5 +166,22 @@
 }
 
 ::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+::-webkit-scrollbar:horizontal {
+  height: 5px;
+  padding-top: 5px;
+}
+
+::-webkit-scrollbar-track:horizontal {
+  background: #dedede;
+}
+
+::-webkit-scrollbar-thumb:horizontal {
+  background: #888;
+}
+
+::-webkit-scrollbar-thumb:horizontal:hover {
   background: #555;
 }
