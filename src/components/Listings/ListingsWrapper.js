@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import ListingCard from "./ListingCard";
 import Skeleton from "@mui/material/Skeleton";
 import Stack from "@mui/material/Stack";
+import useMediaQuery from "@mui/material/useMediaQuery";
 import "./ListingsStyles.scss";
 
 const ListingsWrapper = () => {
@@ -14,6 +15,8 @@ const ListingsWrapper = () => {
     { id: 3, key: "skeleton3" },
     { id: 4, key: "skeleton4" },
   ];
+
+  const isMobile = useMediaQuery("(max-width:480px)");
 
   const renderListings = () => {
     if (fetching) {
@@ -27,11 +30,13 @@ const ListingsWrapper = () => {
               <div className="skeleton__content">
                 <Skeleton variant="text" width={180} height={20} />
                 <Skeleton variant="text" width={180} height={20} />
-                <Skeleton
-                  variant="text"
-                  sx={{ fontSize: "1rem" }}
-                  height={120}
-                />
+                {isMobile ? null : (
+                  <Skeleton
+                    variant="text"
+                    sx={{ fontSize: "1rem" }}
+                    height={120}
+                  />
+                )}
               </div>
             </div>
           </Stack>

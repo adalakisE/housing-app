@@ -57,6 +57,7 @@
 
     @media (max-width: 480px) {
       justify-content: space-around;
+      height: 80%;
     }
   }
 
@@ -82,6 +83,7 @@
 
     @media (max-width: 480px) {
       position: fixed;
+      justify-content: space-evenly;
       width: 100%;
       height: 100vh;
       top: 100%;
@@ -124,7 +126,7 @@
     padding-left: 0;
 
     @media (max-width: 480px) {
-      height: 100%;
+      height: 80%;
     }
   }
 

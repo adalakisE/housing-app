@@ -217,6 +217,10 @@ $listing-description-font-size: 14px !default;
   &__container {
     display: flex;
     flex-direction: row;
+
+    @media (max-width: 480px) {
+      flex-direction: column;
+    }
   }
 
   &__image {
