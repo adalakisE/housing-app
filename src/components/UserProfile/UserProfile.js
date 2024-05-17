@@ -4,7 +4,7 @@ import "./UserProfileStyles.scss";
 
 function UserProfile() {
   return (
-    <div className="user-profile-button__container__off">
+    <div className="user-profile-button__container">
       <Button
         variant="outlined"
         sx={{
@@ -22,8 +22,6 @@ function UserProfile() {
         Login
       </Button>
     </div>
-    // <div className="user-profile__container">
-    // </div>
   );
 }
 

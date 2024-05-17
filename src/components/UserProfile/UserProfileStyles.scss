@@ -13,14 +13,9 @@ $user-profile-color: #f29e7e;
 
 .user-profile-button {
   &__container {
-    border-radius: 50px;
-    color: $user-profile-color;
-    text-wrap: nowrap;
-    margin-left: 20px;
-    border: thin solid $user-profile-color;
-    border-width: 2px;
-    padding: 5px 20px;
-    font-weight: 700;
+    @media (max-width: 480px) {
+      margin-left: 10px;
+    }
 
     &:hover {
       background-color: $user-profile-color;
