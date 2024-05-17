@@ -121,7 +121,8 @@
     padding-left: 0;
   }
 
-  &__dropdown-list-item {
+  &__dropdown-list-item,
+  &__dropdown-list-item--selected {
     padding-top: 5px;
     list-style-type: none;
     border-radius: 4px;
@@ -135,6 +136,12 @@
       // background-color: rgba(242, 159, 126, 0.223);
       background-color: var(--orange-color);
       cursor: pointer;
+      color: white;
+    }
+
+    &--selected {
+      background-color: var(--orange-color);
+      font-weight: 600;
       color: white;
     }
   }
