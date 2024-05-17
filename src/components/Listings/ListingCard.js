@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 import {
   addToComparison,
   removeFromComparison,
-} from "src/redux/actions/toDoActions";
-import Bed from "src/assets/Icons/bed.png";
-import Placeholder from "src/assets/Icons/placeholder.png";
-import Area from "src/assets/Icons/area.png";
+} from "@/redux/actions/toDoActions";
+import Bed from "@/assets/Icons/bed.png";
+import Placeholder from "@/assets/Icons/placeholder.png";
+import Area from "@/assets/Icons/area.png";
 import "./ListingsStyles.scss";
 
 function ListingCard({

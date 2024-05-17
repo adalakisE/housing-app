@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
-import PropertyDetailsForm from "src/components/PropertyDetails/PropertyDetailsForm";
-import MapWrapper from "src/components/Map/MapWrapper";
-import Arrow from "src/assets/Icons/down-arrow.png";
+import PropertyDetailsForm from "../../components/PropertyDetails/PropertyDetailsForm";
+import MapWrapper from "../../components/Map/MapWrapper";
+import Arrow from "../../assets/Icons/down-arrow.png";
 import "./PropertyDetailsStyles.scss";
-import TopBarWrapper from "src/components/TopBar/TopBarWrapper";
+import TopBarWrapper from "../../components/TopBar/TopBarWrapper";
 
 function PropertyDetailsView() {
   const [propertyItem, setPropertyItem] = useState({});

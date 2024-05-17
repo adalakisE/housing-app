@@ -13,6 +13,7 @@ const Dropdown = ({
   setMaxSelectedValue,
 }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  // eslint-disable-next-line no-unused-vars
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [useLabel, setUseLabel] = useState(label);
 
@@ -62,6 +63,7 @@ const Dropdown = ({
     return () => {
       window.removeEventListener("resize", handleResize);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

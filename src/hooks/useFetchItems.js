@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useSearchParams, useNavigate, useLocation } from "react-router-dom";
-import { storeItems, fetching } from "src/redux/actions/toDoActions";
+import { storeItems, fetching } from "@/redux/actions/toDoActions";
 
 // const URL = "http://localhost:5500"; //nodejs server; can be accessed with Live Server vscode extension
 // const URL = "http://localhost:8080"; //springboot server

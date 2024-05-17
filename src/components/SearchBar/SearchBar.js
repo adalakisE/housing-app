@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import useFetchItems from "src/hooks/useFetchItems";
-import Search from "src/assets/Icons/search.png";
+import useFetchItems from "@/hooks/useFetchItems";
+import Search from "@/assets/Icons/search.png";
 import "./SearchBarStyles.scss";
 
 function SearchBar() {

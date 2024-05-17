@@ -1,8 +1,8 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import MainPageView from "src/views/MainPage/MainPage";
-import LandingPageView from "src/views/LandingPage/LandingPage";
-import PropertyDetailsView from "src/views/PropertyPage/PropertyPage";
+import MainPageView from "../views/MainPage/MainPage";
+import LandingPageView from "../views/LandingPage/LandingPage";
+import PropertyDetailsView from "../views/PropertyPage/PropertyPage";
 
 function Router() {
   return (

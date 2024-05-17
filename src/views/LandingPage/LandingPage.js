@@ -1,11 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import logo from "src/assets/images/logo.png";
-import SearchBar from "src/components/SearchBar/SearchBar";
-import Filters from "src/components/Filters/Filters.js";
-import UserProfile from "src/components/UserProfile/UserProfile";
+import logo from "@/assets/images/logo.png";
+import SearchBar from "@/components/SearchBar/SearchBar";
+import Filters from "@/components/Filters/Filters.js";
+import UserProfile from "@/components/UserProfile/UserProfile";
 import { useDispatch } from "react-redux";
-import { resetState } from "src/redux/actions/toDoActions";
+import { resetState } from "@/redux/actions/toDoActions";
 import "./LandingPageStyles.scss";
 
 function LandingPageView() {
