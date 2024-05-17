@@ -55,6 +55,10 @@
     flex-direction: row;
     justify-content: space-between;
     z-index: 3;
+
+    @media (max-width: 480px) {
+      justify-content: space-around;
+    }
   }
 
   &__btn {
@@ -119,6 +123,10 @@
     height: 150px;
     margin-top: 5px;
     padding-left: 0;
+
+    @media (max-width: 480px) {
+      height: 100%;
+    }
   }
 
   &__dropdown-list-item,
