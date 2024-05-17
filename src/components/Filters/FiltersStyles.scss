@@ -155,7 +155,6 @@
 }
 
 ::-webkit-scrollbar {
-  display: none;
   width: 5px;
   padding-top: 5px;
 }
@@ -173,6 +172,7 @@
 }
 
 ::-webkit-scrollbar:horizontal {
+  display: none;
   height: 5px;
   padding-top: 5px;
 }

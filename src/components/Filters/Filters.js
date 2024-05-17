@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Dropdown from "./Dropdown";
 import "./FiltersStyles.scss";
 
-function PriceRangeSelector({ autoSearch, isFiltersVisible }) {
+function PriceRangeSelector({ autoSearch }) {
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -108,7 +108,7 @@ function PriceRangeSelector({ autoSearch, isFiltersVisible }) {
       />
       <Dropdown
         label="Bedrooms"
-        symbol=""
+        symbol="Rooms"
         values={bedroomsValues}
         minSelectedValue={minBedrooms}
         maxSelectedValue={maxBedrooms}

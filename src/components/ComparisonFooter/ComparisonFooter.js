@@ -31,11 +31,11 @@ function ComparisonFooter() {
             alt="house"
           />
           <div className="comparison-footer__list-body">
-            <p style={{ fontWeight: "600" }}>
-              {item.title} ({item.id})
-            </p>
-            <p>{item.area}</p>
-            <p style={{ fontWeight: "bold" }}>${item.price}</p>
+            <p style={{ fontWeight: "600" }}>{item.title}</p>
+            <div s>
+              <p>{item.area}</p>
+              <p style={{ fontWeight: "bold" }}>${item.price}</p>
+            </div>
           </div>
         </div>
         <div className="comparison-footer__list-remove-container">

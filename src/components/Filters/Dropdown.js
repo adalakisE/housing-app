@@ -31,9 +31,25 @@ const Dropdown = ({
 
   document.addEventListener("mousedown", closeOpenMenus);
 
-  const dropdownList = (valuesList, selectedValue, setSelectedValue) => {
+  const dropdownList = (
+    valuesList,
+    selectedValue,
+    setSelectedValue,
+    minOrMax
+  ) => {
     return (
       <ul className="filters__dropdown-list">
+        <li
+          onClick={() => {
+            setSelectedValue(minOrMax === "min" ? "From" : "To"); // Set value to empty string
+          }}
+          className={`filters__dropdown-list-item${
+            selectedValue === "" ? "--selected" : "" // Apply 'selected' class if item is selected
+          }`}
+          key="any"
+        >
+          Any
+        </li>
         {valuesList.map((item) => {
           return (
             <li
@@ -109,7 +125,12 @@ const Dropdown = ({
                 onChange={() => {}}
                 className="filters__dropdown-input"
               />
-              {dropdownList(values, minSelectedValue, setMinSelectedValue)}
+              {dropdownList(
+                values,
+                minSelectedValue,
+                setMinSelectedValue,
+                "min"
+              )}
             </div>
             -
             <div style={{ marginLeft: "10px" }}>
@@ -118,7 +139,12 @@ const Dropdown = ({
                 onChange={() => {}}
                 className="filters__dropdown-input"
               />
-              {dropdownList(values, maxSelectedValue, setMaxSelectedValue)}
+              {dropdownList(
+                values,
+                maxSelectedValue,
+                setMaxSelectedValue,
+                "max"
+              )}
             </div>
           </div>
           <Button
