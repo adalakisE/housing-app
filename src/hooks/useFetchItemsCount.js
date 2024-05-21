@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 
-// const URL = "http://localhost:5500"; //nodejs server; can be accessed with Live Server vscode extension
+const URL = "http://localhost:5500"; //nodejs server; can be accessed with Live Server vscode extension
 // const URL = "http://localhost:8080"; //springboot server
-const URL = "https://fox-house-backend.onrender.com";
+// const URL = "https://fox-house-backend.onrender.com";
 
 function useItemsCount() {
   const [itemsCount, setItemsCount] = useState("");
