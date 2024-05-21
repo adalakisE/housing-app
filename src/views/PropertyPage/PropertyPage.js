@@ -41,7 +41,7 @@ function PropertyDetailsView() {
   return (
     <>
       <TopBarWrapper autoSearch={false} isFiltersVisible={false} />
-
+      {/* <div style={{ display: "flex", flexDirection: "column" }}> */}
       <div className="property-details__back-btn" onClick={() => navigate(-1)}>
         <img className="property-details__icon-arrow" src={Arrow} alt="arrow" />
       </div>
@@ -118,6 +118,7 @@ function PropertyDetailsView() {
           <></>
         )}
       </div>
+      {/* </div> */}
     </>
   );
 }

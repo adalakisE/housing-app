@@ -8,9 +8,12 @@
 
   &__back-btn {
     width: 30px;
-    position: fixed;
-
+    position: relative;
     cursor: pointer;
+
+    @media (max-width: 768px) {
+      margin-bottom: 20px;
+    }
   }
 
   &__icon-arrow {
@@ -24,6 +27,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     padding-bottom: 20px;
+    column-gap: 10px;
 
     @media (max-width: 768px) {
       justify-content: center;
@@ -34,13 +38,17 @@
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
+    row-gap: 10px;
+
+    // column-gap: 10px;
     max-width: 300px;
     max-height: 200px;
   }
 
   &__photo-thumbnail-item {
-    max-width: 150px;
-    max-height: 100px;
+    max-width: 140px;
+    max-height: 95px;
+    margin-right: 10px;
   }
 
   &__photo-item {
