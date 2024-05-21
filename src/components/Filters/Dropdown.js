@@ -43,7 +43,7 @@ const Dropdown = ({
       <ul className="filters__dropdown-list">
         <li
           onClick={() => {
-            setSelectedValue(minOrMax === "min" ? "From" : "To"); // Set value to empty string
+            setSelectedValue(minOrMax === "min" ? "From" : "To");
           }}
           className={`filters__dropdown-list-item${
             selectedValue === "" ? "--selected" : fetching ? "--fetching" : ""

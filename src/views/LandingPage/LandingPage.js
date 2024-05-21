@@ -30,10 +30,12 @@ function LandingPageView() {
           <UserProfile />
         </div>
       </div>
-      <p className="landing-page__body-text">Find your dream home with us</p>
-      <div className="landing-page__body">
-        <SearchBar />
-        <Filters autoSearch={false} />
+      <div className="landing-page__body-container">
+        <p className="landing-page__body-text">Find your dream home with us</p>
+        <div className="landing-page__body-content">
+          <SearchBar />
+          <Filters autoSearch={false} />
+        </div>
       </div>
     </div>
   );
