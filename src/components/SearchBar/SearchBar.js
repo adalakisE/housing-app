@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation, useSearchParams } from "react-router-dom";
 import useFetchItems from "@/hooks/useFetchItems";
+import useFetchItemsCount from "@/hooks/useFetchItemsCount";
 import Search from "@/assets/Icons/search.png";
 import "./SearchBarStyles.scss";
 
@@ -8,6 +9,7 @@ function SearchBar() {
   // eslint-disable-next-line no-unused-vars
   const [searchParams, setSearchParams] = useSearchParams({ title: "" });
   const [stateTitle, setStateTitle] = useState(searchParams.get("title"));
+  const countProperties = useFetchItemsCount("");
   const { setParams } = useFetchItems(stateTitle); // Pass stateTitle and an empty object as filters
 
   const location = useLocation();
@@ -21,6 +23,10 @@ function SearchBar() {
       setParams();
     }
   };
+
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div className="search-bar__container">
@@ -38,7 +44,7 @@ function SearchBar() {
           className="search-bar__search-btn-container"
         >
           <p className="search-bar__search-btn-text--mobile">
-            Search Properties
+            Search {countProperties} Properties
           </p>
           <img
             className="search-bar__search-btn-icon"

@@ -18,6 +18,7 @@ function useFetchItems(stateTitle) {
     dispatch(fetching(true));
     navigate(`/mainpage/search${location.search}`);
 
+    if (!location.search.includes("Price")) return; // workaround, find a better solution
     try {
       const response = await fetch(`${URL}/feed/items/${location.search}`);
       const data = await response.json();

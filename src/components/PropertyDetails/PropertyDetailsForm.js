@@ -1,5 +1,6 @@
 import React from "react";
 import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
 import "./PropertyDetailsStyles.scss";
 
 function PropertyDetailsForm() {
@@ -28,9 +29,25 @@ function PropertyDetailsForm() {
           type="email"
           autoComplete="current-password"
         />
-        <button className="property-details-form__submit-btn">
-          I'm interested
-        </button>
+        <div className="property-details-form__submit-btn">
+          <Button
+            variant="outlined"
+            sx={{
+              backgroundColor: "var(--orange-color)",
+              color: "#fff",
+              border: "1px solid var(--orange-color)",
+              padding: "8px 24px 8px 24px",
+              width: "100%",
+              "&:hover": {
+                backgroundColor: "var(--orange-color-hover)",
+                color: "#fff",
+                border: "1px solid var(--orange-color)",
+              },
+            }}
+          >
+            I'm interested
+          </Button>
+        </div>
       </form>
     </div>
   );

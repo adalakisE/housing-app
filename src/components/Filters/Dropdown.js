@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import { useSelector } from "react-redux";
 import Button from "@mui/material/Button";
 import "./FiltersStyles.scss";
 
@@ -16,6 +17,7 @@ const Dropdown = ({
   // eslint-disable-next-line no-unused-vars
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [useLabel, setUseLabel] = useState(label);
+  const fetching = useSelector((state) => state.appReducer.fetching);
 
   const dropdownRef = useRef(null);
 
@@ -44,7 +46,7 @@ const Dropdown = ({
             setSelectedValue(minOrMax === "min" ? "From" : "To"); // Set value to empty string
           }}
           className={`filters__dropdown-list-item${
-            selectedValue === "" ? "--selected" : "" // Apply 'selected' class if item is selected
+            selectedValue === "" ? "--selected" : fetching ? "--fetching" : ""
           }`}
           key="any"
         >
@@ -57,7 +59,11 @@ const Dropdown = ({
                 setSelectedValue(item.value.toString());
               }}
               className={`filters__dropdown-list-item${
-                selectedValue === item.value.toString() ? "--selected" : "" // Apply 'selected' class if item is selected
+                selectedValue === item.value.toString()
+                  ? "--selected"
+                  : fetching
+                  ? "--fetching"
+                  : ""
               }`}
               key={item.id}
             >
