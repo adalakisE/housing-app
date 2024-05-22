@@ -61,6 +61,10 @@ const Dropdown = ({
               className={`filters__dropdown-list-item${
                 selectedValue === item.value.toString()
                   ? "--selected"
+                  : minOrMax === "min" && item.value >= maxSelectedValue
+                  ? "--fetching"
+                  : minOrMax === "max" && item.value <= minSelectedValue
+                  ? "--fetching"
                   : fetching
                   ? "--fetching"
                   : ""
