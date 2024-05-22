@@ -13,6 +13,8 @@ $user-profile-color: #f29e7e;
 
 .user-profile-button {
   &__container {
+    margin-right: 10px;
+
     @media (max-width: 480px) {
       margin-left: 10px;
     }

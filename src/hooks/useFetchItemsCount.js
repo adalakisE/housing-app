@@ -21,7 +21,6 @@ function useItemsCount() {
       try {
         const response = await fetch(`${URL}/feed/items/count?` + SearchQuery);
         const data = await response.json();
-        console.log(data.count.toString());
         setItemsCount(data.count.toString());
       } catch (error) {
         console.error("Error fetching items count:", error);

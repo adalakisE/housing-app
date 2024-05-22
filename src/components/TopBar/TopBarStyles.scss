@@ -37,4 +37,29 @@
     margin-bottom: 0;
     white-space: nowrap;
   }
+
+  &__add-btn-container {
+    padding: 0 8px;
+    margin-right: 10px;
+    border-radius: 4px;
+    background-color: var(--orange-color);
+    transition: all 0.2s;
+    border: transparent;
+    outline: none;
+
+    &:hover {
+      background-color: var(--orange-color-hover);
+    }
+  }
+
+  &__add-btn-icon {
+    width: 20px;
+    height: 20px;
+    filter: brightness(0) invert(1);
+  }
+
+  &__filters-container {
+    display: flex;
+    justify-content: space-between;
+  }
 }
