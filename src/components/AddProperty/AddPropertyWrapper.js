@@ -2,6 +2,10 @@ import React, { useState, useEffect } from "react";
 import Camera from "@/assets/Icons/camera.png";
 import "./AddPropertyStyles.scss";
 
+// const URL = "http://localhost:5500"; //nodejs server;
+// const URL = "http://localhost:8080"; //springboot server
+const URL = "https://fox-house-backend.onrender.com";
+
 const AddProperty = ({ show, handleClose }) => {
   const [formData, setFormData] = useState({
     title: "",
@@ -10,8 +14,8 @@ const AddProperty = ({ show, handleClose }) => {
     sqFt: "",
     area: "",
     bedrooms: "",
-    latitude: "",
-    longitude: "",
+    latitude: "37.97",
+    longitude: "23.71",
     photo: "",
   });
   //   const [photoLink, setPhotoLink] = useState(null);
@@ -44,7 +48,7 @@ const AddProperty = ({ show, handleClose }) => {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:5500/feed/item", {
+      const response = await fetch(`${URL}/feed/item`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -145,6 +149,7 @@ const AddProperty = ({ show, handleClose }) => {
             <input
               type="number"
               name="latitude"
+              disabled
               value={formData.latitude}
               onChange={handleChange}
             />
@@ -154,6 +159,7 @@ const AddProperty = ({ show, handleClose }) => {
             <input
               type="number"
               name="longitude"
+              disabled
               value={formData.longitude}
               onChange={handleChange}
             />

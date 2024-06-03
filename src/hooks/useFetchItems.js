@@ -3,9 +3,9 @@ import { useDispatch } from "react-redux";
 import { useSearchParams, useNavigate, useLocation } from "react-router-dom";
 import { storeItems, fetching } from "@/redux/actions/toDoActions";
 
-const URL = "http://localhost:5500"; //nodejs server;
+// const URL = "http://localhost:5500"; //nodejs server;
 // const URL = "http://localhost:8080"; //springboot server
-// const URL = "https://fox-house-backend.onrender.com";
+const URL = "https://fox-house-backend.onrender.com";
 
 function useFetchItems(stateTitle) {
   const dispatch = useDispatch();
