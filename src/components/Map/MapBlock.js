@@ -21,7 +21,7 @@ function MapBlock({ stateItems }) {
   const centerLongitude = totalLongitude / stateItems.length;
 
   const markersList = stateItems?.map((item) => {
-    const isInComparison = comparisonArray.includes(item.id);
+    const isInComparison = comparisonArray.includes(item._id);
     const markerColor = isInComparison ? "green" : "blue";
 
     const customIcon = new L.Icon({
@@ -33,7 +33,7 @@ function MapBlock({ stateItems }) {
     });
 
     return (
-      <Marker position={[item.latitude, item.longitude]} key={item.id}>
+      <Marker position={[item.latitude, item.longitude]} key={item._id}>
         <Tooltip direction="top">
           <div className="map__marker-container">
             <img

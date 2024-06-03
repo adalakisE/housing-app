@@ -1,9 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import Camera from "@/assets/Icons/camera.png";
 import "./AddPropertyStyles.scss";
-
-const URL = "http://localhost:5500"; //nodejs server;
-// const URL = "http://localhost:8080"; //springboot server
-// const URL = "https://fox-house-backend.onrender.com";
 
 const AddProperty = ({ show, handleClose }) => {
   const [formData, setFormData] = useState({
@@ -13,7 +10,12 @@ const AddProperty = ({ show, handleClose }) => {
     sqFt: "",
     area: "",
     bedrooms: "",
+    latitude: "",
+    longitude: "",
+    photo: "",
   });
+  //   const [photoLink, setPhotoLink] = useState(null);
+  const [photoPreview, setPhotoPreview] = useState(null);
 
   const handleChange = (e) => {
     setFormData({
@@ -22,10 +24,27 @@ const AddProperty = ({ show, handleClose }) => {
     });
   };
 
+  const handlePhotoChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const base64String = reader.result;
+        setFormData({ ...formData, photoLink: base64String });
+        setPhotoPreview(base64String);
+      };
+      reader.readAsDataURL(file);
+    } else {
+      setFormData({ ...formData, photoLink: "" });
+      setPhotoPreview(null);
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     try {
-      const response = await fetch(`${URL}/feed/item`, {
+      const response = await fetch("http://localhost:5500/feed/item", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -35,14 +54,24 @@ const AddProperty = ({ show, handleClose }) => {
       if (!response.ok) {
         throw new Error("Failed to add property");
       }
-      const data = await response.json();
-      console.log("Property added:", data);
-      // Close the modal or handle success as needed
+      const result = await response.json();
+      console.log("Property added:", result);
       handleClose();
     } catch (error) {
       console.error("Error adding property:", error.message);
     }
   };
+
+  useEffect(() => {
+    if (show) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [show]);
 
   return (
     <div className={`add-property__modal ${show ? "show" : ""}`}>
@@ -111,6 +140,52 @@ const AddProperty = ({ show, handleClose }) => {
               required
             />
           </label>
+          <label>
+            Latitude:
+            <input
+              type="number"
+              name="latitude"
+              value={formData.latitude}
+              onChange={handleChange}
+            />
+          </label>
+          <label>
+            Longitude:
+            <input
+              type="number"
+              name="longitude"
+              value={formData.longitude}
+              onChange={handleChange}
+            />
+          </label>
+          <div className="add-property__upload">
+            <label
+              htmlFor="photo-upload"
+              className="add-property__upload-label"
+            >
+              {photoPreview ? (
+                <img
+                  src={photoPreview}
+                  alt="PhotoPreview"
+                  className="add-property__photo-thumbnail"
+                />
+              ) : (
+                <img
+                  src={Camera}
+                  alt="upload"
+                  className="add-property__upload-icon"
+                />
+              )}
+              <input
+                type="file"
+                id="photo-upload"
+                name="photoLink"
+                accept="image/jpeg, image/png"
+                onChange={handlePhotoChange}
+                className="add-property__upload-input"
+              />
+            </label>
+          </div>
           <button type="submit">Add Property</button>
         </form>
       </div>

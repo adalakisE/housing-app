@@ -46,7 +46,7 @@ const ListingsWrapper = () => {
 
     if (stateItems.length) {
       return stateItems.map((item) => (
-        <li key={item.id} className="listings__list">
+        <li key={item._id} className="listings__list">
           <ListingCard
             item={item}
             imgSrc={item.photoLink}
