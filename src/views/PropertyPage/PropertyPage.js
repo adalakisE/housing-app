@@ -11,7 +11,7 @@ function PropertyDetailsView() {
   const [propertyItem, setPropertyItem] = useState({});
   let { id } = useParams();
   let item = useSelector((state) =>
-    state.appReducer.storedItems.find((item) => item.id === parseInt(id))
+    state.appReducer.storedItems.find((item) => item._id === id)
   );
 
   // const URL = "http://localhost:5500";
@@ -21,7 +21,7 @@ function PropertyDetailsView() {
 
   const getItem = async () => {
     try {
-      const response = await fetch(`${URL}/feed/item?id=${id}`);
+      const response = await fetch(`${URL}/feed/item?_id=${id}`);
       const item = await response.json();
       setPropertyItem(item);
     } catch (err) {
@@ -30,7 +30,7 @@ function PropertyDetailsView() {
   };
 
   useEffect(() => {
-    if (!item?.id) {
+    if (!item?._id) {
       getItem();
     } else {
       setPropertyItem(item);
@@ -50,28 +50,28 @@ function PropertyDetailsView() {
           <img
             className="property-details__photo-item"
             src={propertyItem.photoLink}
-            alt={`img-link-${propertyItem.id}`}
+            alt={`img-link-${propertyItem._id}`}
           />
           <div className="property-details__photo-container-thumbnails">
             <img
               className="property-details__photo-thumbnail-item"
               src={propertyItem.photoLink}
-              alt={`img-link-${propertyItem.id}`}
+              alt={`img-link-${propertyItem._id}`}
             />
             <img
               className="property-details__photo-thumbnail-item"
               src={propertyItem.photoLink}
-              alt={`img-link-${propertyItem.id}`}
+              alt={`img-link-${propertyItem._id}`}
             />
             <img
               className="property-details__photo-thumbnail-item"
               src={propertyItem.photoLink}
-              alt={`img-link-${propertyItem.id}`}
+              alt={`img-link-${propertyItem._id}`}
             />
             <img
               className="property-details__photo-thumbnail-item"
               src={propertyItem.photoLink}
-              alt={`img-link-${propertyItem.id}`}
+              alt={`img-link-${propertyItem._id}`}
             />
           </div>
         </div>

@@ -37,14 +37,14 @@ function ListingCard({
   return (
     <div className="listing-card__container">
       <Link
-        to={`property/${item.id}`}
+        to={`property/${item._id}`}
         style={{ display: "contents", paddingRight: "20px" }}
       >
         <img
           className="listing-card__photo"
           variant="left"
           src={imgSrc}
-          alt={`img-alt: ${item.id}`}
+          alt={`img-alt: ${item._id}`}
         />
       </Link>
       {/* USE THIS FOR MOBILE TEXT ON PHOTO */}
@@ -52,7 +52,7 @@ function ListingCard({
         <div>{description}</div>
       </div> */}
       <div className="listing-card__body">
-        <Link className="listing-card__link" to={`property/${item.id}`}>
+        <Link className="listing-card__link" to={`property/${item._id}`}>
           <div className="listing-card__body-title">{title}</div>
           <div className="listing-card__body-description">
             <p className="listing-card__body-description-text">{description}</p>
@@ -79,7 +79,7 @@ function ListingCard({
           </div>
         </Link>
         <div className="listing-card__footer">
-          <Link className="listing-card__link" to={`property/${item.id}`}>
+          <Link className="listing-card__link" to={`property/${item._id}`}>
             <span className="listing-card__price">
               ${price.toLocaleString("en")}
             </span>
@@ -87,7 +87,7 @@ function ListingCard({
           <div
             className={`${
               stateItems.length < 3 ||
-              stateItems.some((storedItem) => item.id === storedItem.id)
+              stateItems.some((storedItem) => item._id === storedItem._id)
                 ? "listing-card__comparison"
                 : "listing-card__comparison listing-card__comparison--full"
             }`}
@@ -96,7 +96,7 @@ function ListingCard({
             }}
           >
             <span className="listing-card__comparison-text">
-              {stateItems.some((storedItem) => item.id === storedItem.id)
+              {stateItems.some((storedItem) => item._id === storedItem._id)
                 ? "Included in comparison"
                 : "Compare"}
             </span>
